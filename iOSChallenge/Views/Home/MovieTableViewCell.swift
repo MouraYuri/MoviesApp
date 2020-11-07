@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class MoviesTableViewCell: UITableViewCell {
 
@@ -42,6 +43,13 @@ class MoviesTableViewCell: UITableViewCell {
     func setupCell(_ movie: Movie) {
         self.movieTitle.text = movie.title
         self.movieRating.text = self.getMovieRatingText(rating: movie.voteAverage)
+        setMoviePosterImage(movie.posterPath)
+        
+    }
+    
+    func setMoviePosterImage(_ posterPath: String) {
+        let url = URL(string: MoviesAPIURL.getMoviePoster.rawValue + posterPath)
+        self.moviePosterImageView.sd_setImage(with: url, completed: nil)
     }
     
     func getMovieRatingText(rating: Double) -> String {
