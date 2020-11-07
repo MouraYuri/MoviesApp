@@ -15,9 +15,10 @@ class HomeViewModel {
     
     weak var delegate: HomeViewModelDelegate?
     
-    let moviesURL = MoviesAPIURL.moviesNowPlaying.rawValue
+    var moviesURL = MoviesAPIURL.moviesNowPlaying.rawValue
     
-    func fetchMovies(){
+    func fetchMovies(page: Int = 1){
+        self.moviesURL += "&page=\(page)"
         Services.shared.makeRequest(to: moviesURL, method: .get) { [weak self] (data, error) in
             guard let data = data else { return }
             do {

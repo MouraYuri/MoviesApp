@@ -56,8 +56,9 @@ class MoviesTableViewCell: UITableViewCell {
     func setupCell(_ movie: Movie) {
         self.movieTitle.text = movie.title
         self.movieRating.text = self.getMovieRatingText(rating: movie.voteAverage)
-        setMoviePosterImage(movie.posterPath)
-        
+        if let posterPath = movie.posterPath {
+            setMoviePosterImage(posterPath)
+        }
     }
     
     func setMoviePosterImage(_ posterPath: String) {

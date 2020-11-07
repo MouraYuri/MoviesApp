@@ -15,9 +15,10 @@ class HomeViewController: UIViewController {
         return obj
     }()
     
-    lazy var homeMoviesView: HomeMoviesView = {
+    lazy var homeMoviesView: HomeMoviesView = { [unowned self] in
         let obj = HomeMoviesView()
         obj.translatesAutoresizingMaskIntoConstraints = false
+        obj.delegate = self
         return obj
     }()
 
@@ -46,6 +47,13 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewModelDelegate {
     func didFinishFetching(_ response: FetchMoviesResponse) {
-        self.homeMoviesView.movies = response.movies
+        self.homeMoviesView.movies += response.movies
+        self.homeMoviesView.currentPage = response.page
+    }
+}
+
+extension HomeViewController: HomeMoviesViewDelegate {
+    func didDisplayLastCell(currentPage: Int) {
+        self.viewModel.fetchMovies(page: currentPage+1)
     }
 }

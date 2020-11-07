@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol HomeMoviesViewDelegate: class {
+    func didDisplayLastCell(currentPage: Int)
+}
+
 class HomeMoviesView: UIView {
+    
+    weak var delegate: HomeMoviesViewDelegate?
+    
+    var currentPage = 1
     
     var movies: [Movie] = [] {
         didSet {
@@ -63,5 +71,11 @@ extension HomeMoviesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         UIScreen.main.bounds.height/5
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == self.movies.count - 1 {
+            self.delegate?.didDisplayLastCell(currentPage: self.currentPage)
+        }
     }
 }
