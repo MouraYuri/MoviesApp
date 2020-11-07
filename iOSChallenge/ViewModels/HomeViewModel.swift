@@ -15,14 +15,14 @@ class HomeViewModel {
     
     weak var delegate: HomeViewModelDelegate?
     
-    let moviesURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=c2e78b4a8c14e65dd6e27504e6df95ad&language=pt-br&page=1"
+    let moviesURL = MoviesAPIURL.moviesNowPlaying.rawValue
     
     func fetchMovies(){
         Services.shared.makeRequest(to: moviesURL, method: .get) { [weak self] (data, error) in
             guard let data = data else { return }
             do {
-                let decodable = JSONDecoder()
-                let response = try decodable.decode(FetchMoviesResponse.self, from: data)
+                let decoder = JSONDecoder()
+                let response = try decoder.decode(FetchMoviesResponse.self, from: data)
                 self?.delegate?.didFinishFetching(response)
             } catch {
                 print(error)
