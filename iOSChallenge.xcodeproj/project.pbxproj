@@ -15,6 +15,8 @@
 		A00E9CA12556369900E2674C /* iOSChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CA02556369900E2674C /* iOSChallengeTests.swift */; };
 		A00E9CAC2556369900E2674C /* iOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CAB2556369900E2674C /* iOSChallengeUITests.swift */; };
 		A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CCB2556372700E2674C /* HomeViewController.swift */; };
+		A0CB268E2556533C0081FB3B /* HomeMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB268D2556533C0081FB3B /* HomeMoviesView.swift */; };
+		A0CB2693255655A60081FB3B /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB2692255655A60081FB3B /* MovieTableViewCell.swift */; };
 		A0E72F082556405900B9E4D4 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E72F072556405900B9E4D4 /* Services.swift */; };
 		A0E72F0D255640D100B9E4D4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E72F0C255640D100B9E4D4 /* HomeViewModel.swift */; };
 		A0E72F12255646E800B9E4D4 /* FetchMoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E72F11255646E800B9E4D4 /* FetchMoviesResponse.swift */; };
@@ -53,6 +55,8 @@
 		A00E9CAB2556369900E2674C /* iOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSChallengeUITests.swift; sourceTree = "<group>"; };
 		A00E9CAD2556369900E2674C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A00E9CCB2556372700E2674C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A0CB268D2556533C0081FB3B /* HomeMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMoviesView.swift; sourceTree = "<group>"; };
+		A0CB2692255655A60081FB3B /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
 		A0E72F072556405900B9E4D4 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		A0E72F0C255640D100B9E4D4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A0E72F11255646E800B9E4D4 /* FetchMoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMoviesResponse.swift; sourceTree = "<group>"; };
@@ -142,7 +146,7 @@
 		A00E9CC82556370700E2674C /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A00E9CCB2556372700E2674C /* HomeViewController.swift */,
+				A0E72F1E25564F5800B9E4D4 /* Home */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,6 +174,16 @@
 				A0E72F072556405900B9E4D4 /* Services.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		A0E72F1E25564F5800B9E4D4 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A00E9CCB2556372700E2674C /* HomeViewController.swift */,
+				A0CB268D2556533C0081FB3B /* HomeMoviesView.swift */,
+				A0CB2692255655A60081FB3B /* MovieTableViewCell.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,11 +315,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0CB2693255655A60081FB3B /* MovieTableViewCell.swift in Sources */,
 				A0E72F082556405900B9E4D4 /* Services.swift in Sources */,
 				A0E72F0D255640D100B9E4D4 /* HomeViewModel.swift in Sources */,
 				A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */,
 				A0E72F12255646E800B9E4D4 /* FetchMoviesResponse.swift in Sources */,
 				A00E9C872556369600E2674C /* AppDelegate.swift in Sources */,
+				A0CB268E2556533C0081FB3B /* HomeMoviesView.swift in Sources */,
 				A00E9C892556369600E2674C /* SceneDelegate.swift in Sources */,
 				A0E72F1A2556471C00B9E4D4 /* Movie.swift in Sources */,
 				A00E9C912556369600E2674C /* iOSChallenge.xcdatamodeld in Sources */,

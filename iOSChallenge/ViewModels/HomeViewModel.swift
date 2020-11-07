@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HomeViewModelDelegate: class {
-    func didFinishFetching(movies: [Movie])
+    func didFinishFetching(_ response: FetchMoviesResponse)
 }
 
 class HomeViewModel {
@@ -23,7 +23,7 @@ class HomeViewModel {
             do {
                 let decodable = JSONDecoder()
                 let response = try decodable.decode(FetchMoviesResponse.self, from: data)
-                self?.delegate?.didFinishFetching(movies: response.results)
+                self?.delegate?.didFinishFetching(response)
             } catch {
                 print(error)
             }
