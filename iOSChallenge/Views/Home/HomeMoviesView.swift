@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeMoviesViewDelegate: class {
     func didDisplayLastCell(currentPage: Int)
+    func didSelectAFilm(movie: Movie)
 }
 
 class HomeMoviesView: UIView {
@@ -32,7 +33,6 @@ class HomeMoviesView: UIView {
         obj.dataSource = self
         obj.backgroundColor = .clear
         obj.separatorStyle = .none
-        obj.allowsSelection = false
         obj.register(MoviesTableViewCell.self, forCellReuseIdentifier: MoviesTableViewCell.identifier)
         return obj
     }()
@@ -65,7 +65,7 @@ extension HomeMoviesView: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let movie = self.movies[indexPath.row]
-        cell.setupCell(movie)
+        cell.setupCellContent(movie)
         return cell
     }
     
@@ -77,5 +77,10 @@ extension HomeMoviesView: UITableViewDelegate, UITableViewDataSource {
         if indexPath.row == self.movies.count - 1 {
             self.delegate?.didDisplayLastCell(currentPage: self.currentPage)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let movie = movies[indexPath.row]
+        self.delegate?.didSelectAFilm(movie: movie)
     }
 }

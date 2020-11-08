@@ -58,10 +58,15 @@ class MoviesTableViewCell: UITableViewCell {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         self.setupConstraints()
-        self.backgroundColor = .clear
+        self.setupCell()
     }
     
-    func setupCell(_ movie: Movie) {
+    func setupCell(){
+        self.backgroundColor = .clear
+        self.selectionStyle = .none
+    }
+    
+    func setupCellContent(_ movie: Movie) {
         self.movieTitle.text = movie.title
         self.movieRating.text = self.getMovieRatingText(rating: movie.voteAverage)
         if let posterPath = movie.posterPath {
@@ -115,7 +120,7 @@ class MoviesTableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             self.movieTitle.leadingAnchor.constraint(equalTo: self.moviePosterImageView.trailingAnchor, constant: distanceFromMoviePoster),
             self.movieTitle.topAnchor.constraint(equalTo: self.moviePosterImageView.topAnchor, constant: 8),
-            self.movieTitle.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.85),
+            self.movieTitle.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.6),
             self.movieTitle.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
         ])
         

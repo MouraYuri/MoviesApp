@@ -25,8 +25,18 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupConstraints()
+        self.setupViewController()
+    }
+    
+    func setupViewController(){
         self.view.backgroundColor = UIColor(named: "MAIN_COLOR")
-        self.navigationController?.navigationBar.isHidden = true
+        self.title = "Home"
+        self.setupNavigationBar()
+    }
+    
+    func setupNavigationBar(){
+        self.navigationController?.navigationBar.barTintColor = UIColor(named: "MAIN_COLOR")
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,5 +66,11 @@ extension HomeViewController: HomeViewModelDelegate {
 extension HomeViewController: HomeMoviesViewDelegate {
     func didDisplayLastCell(currentPage: Int) {
         self.viewModel.fetchMovies(page: currentPage+1)
+    }
+    
+    func didSelectAFilm(movie: Movie) {
+        let detailViewController = DetailViewController()
+        detailViewController.setupViewControllerContent(movie: movie)
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
