@@ -35,10 +35,10 @@ class DetailViewController: UIViewController {
         self.view.addSubview(self.moviePosterView)
         
         NSLayoutConstraint.activate([
-            self.moviePosterView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.moviePosterView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.moviePosterView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.moviePosterView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.55)
+            self.moviePosterView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            self.moviePosterView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 16),
+            self.moviePosterView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.35),
+            self.moviePosterView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.45)
         ])
     }
 }
