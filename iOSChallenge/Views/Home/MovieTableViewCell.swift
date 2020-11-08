@@ -40,6 +40,14 @@ class MoviesTableViewCell: UITableViewCell {
         return obj
     }()
     
+    lazy var movieReleaseDate: UILabel = {
+        let obj = UILabel()
+        obj.textColor = .gray
+        obj.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        obj.translatesAutoresizingMaskIntoConstraints = false
+        return obj
+    }()
+    
     lazy var movieRating: UILabel = {
         let obj = UILabel()
         obj.textColor = .white
@@ -59,11 +67,17 @@ class MoviesTableViewCell: UITableViewCell {
         if let posterPath = movie.posterPath {
             setMoviePosterImage(posterPath)
         }
+        self.movieReleaseDate.text = self.getMovieReleaseDateText(movieReleaseDate: movie.releaseDate)
     }
     
     func setMoviePosterImage(_ posterPath: String) {
         let url = URL(string: MoviesAPIURL.getMoviePoster.rawValue + posterPath)
         self.moviePosterImageView.sd_setImage(with: url, completed: nil)
+    }
+    
+    func getMovieReleaseDateText(movieReleaseDate: String) -> String{
+        let retString = "Data de lançamento: " + movieReleaseDate
+        return retString
     }
     
     func getMovieRatingText(rating: Double) -> String {
@@ -79,6 +93,7 @@ class MoviesTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.moviePosterImageViewContainer)
         self.moviePosterImageViewContainer.addSubview(self.moviePosterImageView)
         self.contentView.addSubview(self.movieTitle)
+        self.contentView.addSubview(self.movieReleaseDate)
         self.contentView.addSubview(self.movieRating)
         
         let distanceFromMoviePoster = CGFloat(16)
@@ -102,6 +117,13 @@ class MoviesTableViewCell: UITableViewCell {
             self.movieTitle.topAnchor.constraint(equalTo: self.moviePosterImageView.topAnchor, constant: 8),
             self.movieTitle.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.85),
             self.movieTitle.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.movieReleaseDate.leadingAnchor.constraint(equalTo: self.moviePosterImageView.trailingAnchor, constant: distanceFromMoviePoster),
+            self.movieReleaseDate.centerYAnchor.constraint(equalTo: self.moviePosterImageView.centerYAnchor),
+            self.movieReleaseDate.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.85),
+            self.movieReleaseDate.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
         ])
         
         NSLayoutConstraint.activate([
