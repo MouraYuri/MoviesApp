@@ -76,7 +76,7 @@ class MoviesTableViewCell: UITableViewCell {
     }
     
     func setMoviePosterImage(_ posterPath: String) {
-        let url = URL(string: MoviesAPIURL.getMoviePoster.rawValue + posterPath)
+        let url = URL(string: MoviesAPIURL.getMovieImage.rawValue + posterPath)
         self.moviePosterImageView.sd_setImage(with: url, completed: nil)
     }
     
