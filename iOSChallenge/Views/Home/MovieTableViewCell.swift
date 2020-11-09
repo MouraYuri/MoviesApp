@@ -32,7 +32,7 @@ class MoviesTableViewCell: UITableViewCell {
         return obj
     }()
     
-    lazy var movieTitle: UILabel = {
+    lazy var movieTitleLabel: UILabel = {
         let obj = UILabel()
         obj.textColor = .white
         obj.font = UIFont.systemFont(ofSize: 18, weight: .bold)
@@ -40,7 +40,7 @@ class MoviesTableViewCell: UITableViewCell {
         return obj
     }()
     
-    lazy var movieReleaseDate: UILabel = {
+    lazy var movieReleaseDateLabel: UILabel = {
         let obj = UILabel()
         obj.textColor = .gray
         obj.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
@@ -48,9 +48,18 @@ class MoviesTableViewCell: UITableViewCell {
         return obj
     }()
     
-    lazy var movieRating: UILabel = {
+    lazy var movieRatingLabel: UILabel = {
         let obj = UILabel()
         obj.textColor = .white
+        obj.translatesAutoresizingMaskIntoConstraints = false
+        return obj
+    }()
+    
+    lazy var favoriteButton: UIButton = {
+        let obj = UIButton()
+        let img = UIImage(named: "Not-Favorite")?.withRenderingMode(.alwaysTemplate)
+        obj.setImage(img, for: .normal)
+        obj.tintColor = .red
         obj.translatesAutoresizingMaskIntoConstraints = false
         return obj
     }()
@@ -67,11 +76,11 @@ class MoviesTableViewCell: UITableViewCell {
     }
     
     func setupCellContent(_ movie: Movie) {
-        self.movieTitle.text = movie.title
-        self.movieRating.text = self.getMovieRatingText(rating: movie.voteAverage)
+        self.movieTitleLabel.text = movie.title
+        self.movieRatingLabel.text = self.getMovieRatingText(rating: movie.voteAverage)
         self.moviePosterImageView.setImage(url: .getMovieImage, path: movie.posterPath)
         
-        self.movieReleaseDate.text = self.getMovieReleaseDateText(movieReleaseDate: movie.releaseDate)
+        self.movieReleaseDateLabel.text = self.getMovieReleaseDateText(movieReleaseDate: movie.releaseDate)
     }
     
     func getMovieReleaseDateText(movieReleaseDate: String) -> String{
@@ -91,9 +100,10 @@ class MoviesTableViewCell: UITableViewCell {
     func setupConstraints(){
         self.contentView.addSubview(self.moviePosterImageViewContainer)
         self.moviePosterImageViewContainer.addSubview(self.moviePosterImageView)
-        self.contentView.addSubview(self.movieTitle)
-        self.contentView.addSubview(self.movieReleaseDate)
-        self.contentView.addSubview(self.movieRating)
+        self.contentView.addSubview(self.movieTitleLabel)
+        self.contentView.addSubview(self.movieReleaseDateLabel)
+        self.contentView.addSubview(self.movieRatingLabel)
+        self.contentView.addSubview(self.favoriteButton)
         
         let distanceFromMoviePoster = CGFloat(16)
         
@@ -112,24 +122,31 @@ class MoviesTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.movieTitle.leadingAnchor.constraint(equalTo: self.moviePosterImageView.trailingAnchor, constant: distanceFromMoviePoster),
-            self.movieTitle.topAnchor.constraint(equalTo: self.moviePosterImageView.topAnchor, constant: 8),
-            self.movieTitle.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.6),
-            self.movieTitle.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
+            self.movieTitleLabel.leadingAnchor.constraint(equalTo: self.moviePosterImageView.trailingAnchor, constant: distanceFromMoviePoster),
+            self.movieTitleLabel.topAnchor.constraint(equalTo: self.moviePosterImageView.topAnchor, constant: 8),
+            self.movieTitleLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.6),
+            self.movieTitleLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
         ])
         
         NSLayoutConstraint.activate([
-            self.movieReleaseDate.leadingAnchor.constraint(equalTo: self.moviePosterImageView.trailingAnchor, constant: distanceFromMoviePoster),
-            self.movieReleaseDate.centerYAnchor.constraint(equalTo: self.moviePosterImageView.centerYAnchor),
-            self.movieReleaseDate.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.85),
-            self.movieReleaseDate.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
+            self.movieReleaseDateLabel.leadingAnchor.constraint(equalTo: self.moviePosterImageView.trailingAnchor, constant: distanceFromMoviePoster),
+            self.movieReleaseDateLabel.centerYAnchor.constraint(equalTo: self.moviePosterImageView.centerYAnchor),
+            self.movieReleaseDateLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.85),
+            self.movieReleaseDateLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
         ])
         
         NSLayoutConstraint.activate([
-            self.movieRating.leadingAnchor.constraint(equalTo: self.moviePosterImageView.trailingAnchor, constant: distanceFromMoviePoster),
-            self.movieRating.bottomAnchor.constraint(equalTo: self.moviePosterImageView.bottomAnchor, constant: -8),
-            self.movieRating.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.7),
-            self.movieRating.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
+            self.movieRatingLabel.leadingAnchor.constraint(equalTo: self.moviePosterImageView.trailingAnchor, constant: distanceFromMoviePoster),
+            self.movieRatingLabel.bottomAnchor.constraint(equalTo: self.moviePosterImageView.bottomAnchor, constant: -8),
+            self.movieRatingLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.7),
+            self.movieRatingLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.favoriteButton.centerYAnchor.constraint(equalTo: self.movieTitleLabel.centerYAnchor),
+            self.favoriteButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.favoriteButton.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.08),
+            self.favoriteButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.16)
         ])
     }
     
