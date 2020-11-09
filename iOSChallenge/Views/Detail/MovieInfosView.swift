@@ -52,7 +52,7 @@ class MovieInfosView: UIView {
             self.movieTitle.topAnchor.constraint(equalTo: self.topAnchor),
             self.movieTitle.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             self.movieTitle.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.6),
-            self.movieTitle.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3)
+            self.movieTitle.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.6)
         ])
         
         NSLayoutConstraint.activate([
@@ -63,10 +63,10 @@ class MovieInfosView: UIView {
         ])
         
         NSLayoutConstraint.activate([
-            self.releaseDate.topAnchor.constraint(equalTo: self.movieRating.bottomAnchor, constant: 4),
+            self.releaseDate.topAnchor.constraint(equalTo: self.movieRating.bottomAnchor, constant: 8),
             self.releaseDate.trailingAnchor.constraint(equalTo: self.movieRating.trailingAnchor),
             self.releaseDate.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.45),
-            self.releaseDate.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.3)
+            self.releaseDate.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.4)
         ])
     }
 
