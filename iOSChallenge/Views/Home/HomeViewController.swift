@@ -58,7 +58,11 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewModelDelegate {
     func didFinishFetching(_ response: FetchMoviesResponse) {
-        self.homeMoviesView.movies += response.movies
+        if response.page == 1 {
+            self.homeMoviesView.movies = response.movies
+        } else {
+            self.homeMoviesView.movies.append(contentsOf: response.movies)
+        }
         self.homeMoviesView.currentPage = response.page
     }
 }
