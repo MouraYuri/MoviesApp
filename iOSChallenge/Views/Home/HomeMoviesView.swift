@@ -53,6 +53,14 @@ class HomeMoviesView: UIView {
             self.moviesTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
+    
+    func setMovies(page: Int, movies: [Movie]) {
+        if page == 1 {
+            self.movies = movies
+        } else {
+            self.movies.append(contentsOf: movies)
+        }
+    }
 }
 
 extension HomeMoviesView: UITableViewDelegate, UITableViewDataSource {

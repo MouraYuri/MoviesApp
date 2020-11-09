@@ -32,15 +32,12 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = UIColor(named: "MAIN_COLOR")
         self.title = "Home"
         self.setupNavigationBar()
+        self.viewModel.fetchMovies()
     }
     
     func setupNavigationBar(){
         self.navigationController?.navigationBar.barTintColor = UIColor(named: "MAIN_COLOR")
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.viewModel.fetchMovies()
     }
     
     func setupConstraints() {
@@ -58,11 +55,7 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewModelDelegate {
     func didFinishFetching(_ response: FetchMoviesResponse) {
-        if response.page == 1 {
-            self.homeMoviesView.movies = response.movies
-        } else {
-            self.homeMoviesView.movies.append(contentsOf: response.movies)
-        }
+        self.homeMoviesView.setMovies(page: response.page, movies: response.movies)
         self.homeMoviesView.currentPage = response.page
     }
 }
