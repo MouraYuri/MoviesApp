@@ -69,15 +69,9 @@ class MoviesTableViewCell: UITableViewCell {
     func setupCellContent(_ movie: Movie) {
         self.movieTitle.text = movie.title
         self.movieRating.text = self.getMovieRatingText(rating: movie.voteAverage)
-        if let posterPath = movie.posterPath {
-            setMoviePosterImage(posterPath)
-        }
+        self.moviePosterImageView.setImage(url: .getMovieImage, path: movie.posterPath)
+        
         self.movieReleaseDate.text = self.getMovieReleaseDateText(movieReleaseDate: movie.releaseDate)
-    }
-    
-    func setMoviePosterImage(_ posterPath: String) {
-        let url = URL(string: MoviesAPIURL.getMovieImage.rawValue + posterPath)
-        self.moviePosterImageView.sd_setImage(with: url, completed: nil)
     }
     
     func getMovieReleaseDateText(movieReleaseDate: String) -> String{
