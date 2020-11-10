@@ -23,9 +23,11 @@ class DetailViewController: UIViewController {
         return obj
     }()
     
-    lazy var favoriteButton: FavoriteButton = {
+    lazy var favoriteButton: FavoriteButton = { [unowned self] in
         let obj = FavoriteButton()
+        obj.addTouchTarget(self, selector: #selector(didPressFavoriteButton(sender:)))
         obj.translatesAutoresizingMaskIntoConstraints = false
+        obj.isUserInteractionEnabled = true
         return obj
     }()
     
@@ -49,6 +51,7 @@ class DetailViewController: UIViewController {
         self.setupViewController()
         self.setupConstraints()
     }
+    
     
     func setupViewController(){
         self.view.backgroundColor = UIColor(named: "MAIN_COLOR")
@@ -103,5 +106,9 @@ class DetailViewController: UIViewController {
             self.synopsisTextView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -1*distanceFromBorders),
             self.synopsisTextView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
         ])
+    }
+    
+    @objc func didPressFavoriteButton(sender: FavoriteButton){
+        self.favoriteButton.updateFavorite()
     }
 }
