@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 protocol HomeViewModelDelegate: class {
     func didFinishFetching(_ response: FetchMoviesResponse)
@@ -30,4 +31,26 @@ class HomeViewModel {
             }
         }
     }
+    
+    func getFavoritedMovies(){
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "MovieCoreData")
+        do {
+            let managedObjectMovies = (try context.fetch(fetchRequest))
+            let movies = self.parseManagedObjectToMovie(movies: managedObjectMovies)
+            print(movies)
+        }catch {
+            print(error)
+        }
+    }
+    
+    func parseManagedObjectToMovie(movies: [NSManagedObject]) -> [Movie] {
+        var retMovies: [Movie] = []
+        for movie in movies {
+            retMovies.append(Movie(managedObj: movie))
+        }
+        return retMovies
+    }
+    
 }

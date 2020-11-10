@@ -26,13 +26,17 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.setupConstraints()
         self.setupViewController()
+        self.viewModel.fetchMovies()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.viewModel.getFavoritedMovies()
     }
     
     func setupViewController(){
         self.view.backgroundColor = UIColor(named: "MAIN_COLOR")
         self.title = "Home"
         self.setupNavigationBar()
-        self.viewModel.fetchMovies()
     }
     
     func setupNavigationBar(){
@@ -66,8 +70,7 @@ extension HomeViewController: HomeMoviesViewDelegate {
     }
     
     func didSelectAFilm(movie: Movie) {
-        let detailViewController = DetailViewController()
-        detailViewController.setupViewControllerContent(movie: movie)
+        let detailViewController = DetailViewController(movie)
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

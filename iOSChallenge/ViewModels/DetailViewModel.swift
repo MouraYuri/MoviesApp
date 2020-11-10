@@ -19,6 +19,8 @@ class DetailViewModel {
             movieManagedObject.setValue(movie.overview, forKey: "overview")
             movieManagedObject.setValue(movie.title, forKey: "title")
             movieManagedObject.setValue(movie.voteAverage, forKey: "voteAverage")
+            movieManagedObject.setValue(movie.backdropPath, forKey: "backdropPath")
+            movieManagedObject.setValue(movie.posterPath, forKey: "posterPath")
             
             do {
                 try context.save()

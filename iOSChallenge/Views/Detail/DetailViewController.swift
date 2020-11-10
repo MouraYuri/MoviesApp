@@ -10,6 +10,19 @@ import SDWebImage
 
 class DetailViewController: UIViewController {
     
+    let viewModel = DetailViewModel()
+    
+    let movie: Movie
+    
+    init(_ movie: Movie) {
+        self.movie = movie
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     lazy var movieBackdropImageView: UIImageView = {
         let obj = UIImageView()
         obj.contentMode = .scaleAspectFit
@@ -48,6 +61,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupViewControllerContent(movie: movie)
         self.setupViewController()
         self.setupConstraints()
     }
@@ -110,5 +124,6 @@ class DetailViewController: UIViewController {
     
     @objc func didPressFavoriteButton(sender: FavoriteButton){
         self.favoriteButton.updateFavorite()
+        self.viewModel.favoriteMovie(movie: self.movie)
     }
 }
