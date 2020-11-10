@@ -23,6 +23,12 @@ class DetailViewController: UIViewController {
         return obj
     }()
     
+    lazy var favoriteButton: FavoriteButton = {
+        let obj = FavoriteButton()
+        obj.translatesAutoresizingMaskIntoConstraints = false
+        return obj
+    }()
+    
     lazy var movieInfosView: MovieInfosView = {
         let obj = MovieInfosView()
         obj.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +65,7 @@ class DetailViewController: UIViewController {
     func setupConstraints(){
         self.view.addSubview(self.movieBackdropImageView)
         self.view.addSubview(self.moviePosterImageView)
+        self.view.addSubview(self.favoriteButton)
         self.view.addSubview(self.movieInfosView)
         self.view.addSubview(self.synopsisTextView)
         let distanceFromBorders = CGFloat(16)
@@ -74,6 +81,13 @@ class DetailViewController: UIViewController {
             self.movieBackdropImageView.topAnchor.constraint(equalTo: self.view.topAnchor),
             self.movieBackdropImageView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
             self.movieBackdropImageView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.4)
+        ])
+        
+        NSLayoutConstraint.activate([
+            self.favoriteButton.leadingAnchor.constraint(equalTo: self.moviePosterImageView.trailingAnchor, constant: distanceFromBorders),
+            self.favoriteButton.bottomAnchor.constraint(equalTo: self.moviePosterImageView.bottomAnchor, constant: -8),
+            self.favoriteButton.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.07),
+            self.favoriteButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -1*distanceFromBorders)
         ])
         
         NSLayoutConstraint.activate([

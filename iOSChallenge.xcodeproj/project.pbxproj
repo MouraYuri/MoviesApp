@@ -18,6 +18,7 @@
 		A00E9CA12556369900E2674C /* iOSChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CA02556369900E2674C /* iOSChallengeTests.swift */; };
 		A00E9CAC2556369900E2674C /* iOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CAB2556369900E2674C /* iOSChallengeUITests.swift */; };
 		A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CCB2556372700E2674C /* HomeViewController.swift */; };
+		A041784A25596D1200D47C97 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041784925596D1200D47C97 /* FavoriteButton.swift */; };
 		A09E86AF2556EE3A0039A4CA /* MoviesAPIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */; };
 		A0C358DB255888CF0084B470 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C358DA255888CF0084B470 /* DetailViewController.swift */; };
 		A0C358E52558A9A10084B470 /* MovieInfosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C358E42558A9A10084B470 /* MovieInfosView.swift */; };
@@ -68,6 +69,7 @@
 		A00E9CAB2556369900E2674C /* iOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSChallengeUITests.swift; sourceTree = "<group>"; };
 		A00E9CAD2556369900E2674C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A00E9CCB2556372700E2674C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A041784925596D1200D47C97 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPIURL.swift; sourceTree = "<group>"; };
 		A0C358DA255888CF0084B470 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		A0C358E42558A9A10084B470 /* MovieInfosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieInfosView.swift; sourceTree = "<group>"; };
@@ -207,6 +209,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		A041784825596CF600D47C97 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				A041784925596D1200D47C97 /* FavoriteButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		A0C358D9255888AF0084B470 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +232,7 @@
 				A0E72F072556405900B9E4D4 /* Services.swift */,
 				A0C358E92558AC2F0084B470 /* UIImageViewExtension.swift */,
 				A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */,
+				A041784825596CF600D47C97 /* Components */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -486,6 +497,7 @@
 				A0CB2693255655A60081FB3B /* MovieTableViewCell.swift in Sources */,
 				A0E72F082556405900B9E4D4 /* Services.swift in Sources */,
 				A0E72F0D255640D100B9E4D4 /* HomeViewModel.swift in Sources */,
+				A041784A25596D1200D47C97 /* FavoriteButton.swift in Sources */,
 				A0C358DB255888CF0084B470 /* DetailViewController.swift in Sources */,
 				A0C358EA2558AC2F0084B470 /* UIImageViewExtension.swift in Sources */,
 				A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */,
