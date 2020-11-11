@@ -9,7 +9,7 @@ import UIKit
 
 protocol HomeMoviesViewDelegate: class {
     func didDisplayLastCell(currentPage: Int)
-    func didSelectAFilm(movie: Movie)
+    func didSelectAMovie(_ movie: Movie, movieFavoriteStatus: Bool)
 }
 
 class HomeMoviesView: UIView {
@@ -19,6 +19,14 @@ class HomeMoviesView: UIView {
     var currentPage = 1
     
     var movies: [Movie] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.moviesTableView.reloadData()
+            }
+        }
+    }
+    
+    var favoritedMoviesIds: [Int] = [] {
         didSet {
             DispatchQueue.main.async {
                 self.moviesTableView.reloadData()
@@ -73,6 +81,7 @@ extension HomeMoviesView: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let movie = self.movies[indexPath.row]
+        cell.isFavorite = self.favoritedMoviesIds.contains(movie.id)
         cell.setupCellContent(movie)
         return cell
     }
@@ -89,6 +98,7 @@ extension HomeMoviesView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = movies[indexPath.row]
-        self.delegate?.didSelectAFilm(movie: movie)
+        let movieFavoriteStatus = self.favoritedMoviesIds.contains(movie.id)
+        self.delegate?.didSelectAMovie(movie, movieFavoriteStatus: movieFavoriteStatus)
     }
 }

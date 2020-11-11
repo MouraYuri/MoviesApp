@@ -94,8 +94,8 @@ class FavoriteButton: UIButton {
         self.butttonTitleLabel.text = "Favoritar"
     }
     
-    func updateFavorite(){
-        self.isFavorite = !(self.isFavorite)
+    func changeButtonInterface(favoriteStatus: Bool){
+        self.isFavorite = favoriteStatus
     }
     
     func addTouchTarget(_ viewController: UIViewController, selector: Selector) {

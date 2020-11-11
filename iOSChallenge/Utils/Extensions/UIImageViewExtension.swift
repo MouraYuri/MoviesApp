@@ -14,6 +14,13 @@ extension UIImageView {
         if let path = path {
             let url = URL(string: MoviesAPIURL.getMovieImage.rawValue + path)
             self.sd_setImage(with: url, completed: nil)
+        } else {
+            self.image = UIImage(named: "NoImageFound")
         }
+    }
+    
+    func setImageAndTint(_ img: UIImage?, withColor color:UIColor) {
+        self.image = img?.withRenderingMode(.alwaysTemplate)
+        self.tintColor = color
     }
 }

@@ -12,6 +12,8 @@ class MoviesTableViewCell: UITableViewCell {
 
     static let identifier = "MoviesTableViewCell"
     
+    var isFavorite: Bool = false
+    
     lazy var moviePosterImageViewContainer: UIView = {
         let obj = UIView()
         obj.translatesAutoresizingMaskIntoConstraints = false
@@ -55,10 +57,10 @@ class MoviesTableViewCell: UITableViewCell {
         return obj
     }()
     
-    lazy var favoriteButton: UIButton = {
-        let obj = UIButton()
+    lazy var favoriteIndicatorImageView: UIImageView = {
+        let obj = UIImageView()
         let img = UIImage(named: "Not-Favorite")?.withRenderingMode(.alwaysTemplate)
-        obj.setImage(img, for: .normal)
+        obj.image = img
         obj.tintColor = .red
         obj.translatesAutoresizingMaskIntoConstraints = false
         return obj
@@ -81,6 +83,7 @@ class MoviesTableViewCell: UITableViewCell {
         self.moviePosterImageView.setImage(url: .getMovieImage, path: movie.posterPath)
         
         self.movieReleaseDateLabel.text = self.getMovieReleaseDateText(movieReleaseDate: movie.releaseDate)
+        self.setFavoriteButtonImage()
     }
     
     func getMovieReleaseDateText(movieReleaseDate: String) -> String{
@@ -97,13 +100,18 @@ class MoviesTableViewCell: UITableViewCell {
         return retString == "" ? "⭐" : retString
     }
     
+    func setFavoriteButtonImage(){
+        let img = self.isFavorite ? UIImage(named: "Favorite") : UIImage(named: "Not-Favorite")
+        self.favoriteIndicatorImageView.setImageAndTint(img, withColor: .red)
+    }
+    
     func setupConstraints(){
         self.contentView.addSubview(self.moviePosterImageViewContainer)
         self.moviePosterImageViewContainer.addSubview(self.moviePosterImageView)
         self.contentView.addSubview(self.movieTitleLabel)
         self.contentView.addSubview(self.movieReleaseDateLabel)
         self.contentView.addSubview(self.movieRatingLabel)
-        self.contentView.addSubview(self.favoriteButton)
+        self.contentView.addSubview(self.favoriteIndicatorImageView)
         
         let distanceFromMoviePoster = CGFloat(16)
         
@@ -143,10 +151,10 @@ class MoviesTableViewCell: UITableViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            self.favoriteButton.centerYAnchor.constraint(equalTo: self.movieTitleLabel.centerYAnchor),
-            self.favoriteButton.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.favoriteButton.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.08),
-            self.favoriteButton.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.16)
+            self.favoriteIndicatorImageView.centerYAnchor.constraint(equalTo: self.movieTitleLabel.centerYAnchor),
+            self.favoriteIndicatorImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
+            self.favoriteIndicatorImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.08),
+            self.favoriteIndicatorImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.16)
         ])
     }
     

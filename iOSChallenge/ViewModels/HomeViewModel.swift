@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import CoreData
 
 protocol HomeViewModelDelegate: class {
     func didFinishFetching(_ response: FetchMoviesResponse)
+    func didFinishFetchingFavoritedMoviesIDs(_ favoritedMoviesIDs: [Int])
 }
 
 class HomeViewModel {
@@ -18,8 +20,8 @@ class HomeViewModel {
     var moviesURL = MoviesAPIURL.moviesNowPlaying.rawValue
     
     func fetchMovies(page: Int = 1){
-        self.moviesURL += "&page=\(page)"
-        Services.shared.makeRequest(to: moviesURL, method: .get) { [weak self] (data, error) in
+        let requestURL = self.moviesURL + "&page=\(page)"
+        RequestsManager.shared.makeRequest(to: requestURL, method: .get) { [weak self] (data, error) in
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
@@ -30,4 +32,28 @@ class HomeViewModel {
             }
         }
     }
+    
+    func getFavoritedMovies(){
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "MovieCoreData")
+        do {
+            let managedObjectMovies = try context.fetch(fetchRequest)
+            let favoritedMoviesIDs = self.parseManagedObjectsToMoviesIDs(managedObjects: managedObjectMovies)
+            self.delegate?.didFinishFetchingFavoritedMoviesIDs(favoritedMoviesIDs)
+        }catch {
+            print(error)
+        }
+    }
+    
+    func parseManagedObjectsToMoviesIDs(managedObjects: [NSManagedObject]) -> [Int] {
+        var idArray: [Int] = []
+        for managedObject in managedObjects {
+            if let id = managedObject.value(forKey: "id") as? Int {
+                idArray.append(id)
+            }
+        }
+        return idArray
+    }
+    
 }

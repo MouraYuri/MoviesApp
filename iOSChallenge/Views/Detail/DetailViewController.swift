@@ -10,6 +10,22 @@ import SDWebImage
 
 class DetailViewController: UIViewController {
     
+    let viewModel = DetailViewModel()
+    
+    let movie: Movie
+    
+    var isFavorite: Bool
+    
+    init(_ movie: Movie, movieFavoriteStatus: Bool) {
+        self.movie = movie
+        self.isFavorite = movieFavoriteStatus
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     lazy var movieBackdropImageView: UIImageView = {
         let obj = UIImageView()
         obj.contentMode = .scaleAspectFit
@@ -26,6 +42,7 @@ class DetailViewController: UIViewController {
     lazy var favoriteButton: FavoriteButton = { [unowned self] in
         let obj = FavoriteButton()
         obj.addTouchTarget(self, selector: #selector(didPressFavoriteButton(sender:)))
+        obj.changeButtonInterface(favoriteStatus: self.isFavorite)
         obj.translatesAutoresizingMaskIntoConstraints = false
         obj.isUserInteractionEnabled = true
         return obj
@@ -48,6 +65,7 @@ class DetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupViewControllerContent(movie: movie)
         self.setupViewController()
         self.setupConstraints()
     }
@@ -59,7 +77,11 @@ class DetailViewController: UIViewController {
     }
     
     func setupViewControllerContent(movie: Movie){
-        self.movieBackdropImageView.setImage(url: .getMovieImage, path: movie.backdropPath)
+        if movie.backdropPath == nil {
+            self.movieBackdropImageView.isHidden = true
+        } else {
+            self.movieBackdropImageView.setImage(url: .getMovieImage, path: movie.backdropPath)
+        }
         self.moviePosterImageView.setImage(url: .getMovieImage, path: movie.posterPath)
         self.movieInfosView.setupMovieInfosContent(movie)
         self.synopsisTextView.text = movie.overview
@@ -109,6 +131,9 @@ class DetailViewController: UIViewController {
     }
     
     @objc func didPressFavoriteButton(sender: FavoriteButton){
-        self.favoriteButton.updateFavorite()
+        self.isFavorite = !(self.isFavorite)
+        self.favoriteButton.changeButtonInterface(favoriteStatus: self.isFavorite)
+        self.isFavorite ? self.viewModel.favoriteMovie(movie: self.movie) : self.viewModel.unfavoriteMovie(movie: self.movie)
+        
     }
 }
