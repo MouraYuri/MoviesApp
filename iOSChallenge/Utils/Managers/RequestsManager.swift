@@ -13,9 +13,9 @@ enum RequestMethod: String {
     case post = "POST"
 }
 
-class Services {
+class RequestsManager {
     
-    static let shared = Services()
+    static let shared = RequestsManager()
     
     private init() {}
     

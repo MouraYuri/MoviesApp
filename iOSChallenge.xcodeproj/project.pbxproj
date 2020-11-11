@@ -12,12 +12,12 @@
 		5296B76AB510D7394FA22084 /* Pods_iOSChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A43033A2B689E74A6D6F35F /* Pods_iOSChallengeTests.framework */; };
 		A00E9C872556369600E2674C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9C862556369600E2674C /* AppDelegate.swift */; };
 		A00E9C892556369600E2674C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9C882556369600E2674C /* SceneDelegate.swift */; };
-		A00E9C912556369600E2674C /* iOSChallenge.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A00E9C8F2556369600E2674C /* iOSChallenge.xcdatamodeld */; };
 		A00E9C932556369800E2674C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00E9C922556369800E2674C /* Assets.xcassets */; };
 		A00E9C962556369800E2674C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00E9C942556369800E2674C /* LaunchScreen.storyboard */; };
 		A00E9CA12556369900E2674C /* iOSChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CA02556369900E2674C /* iOSChallengeTests.swift */; };
 		A00E9CAC2556369900E2674C /* iOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CAB2556369900E2674C /* iOSChallengeUITests.swift */; };
 		A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CCB2556372700E2674C /* HomeViewController.swift */; };
+		A0237385255B773300B161D5 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0237384255B773300B161D5 /* UIButtonExtension.swift */; };
 		A041784A25596D1200D47C97 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041784925596D1200D47C97 /* FavoriteButton.swift */; };
 		A09E86AF2556EE3A0039A4CA /* MoviesAPIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */; };
 		A0C358DB255888CF0084B470 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C358DA255888CF0084B470 /* DetailViewController.swift */; };
@@ -25,7 +25,7 @@
 		A0C358EA2558AC2F0084B470 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C358E92558AC2F0084B470 /* UIImageViewExtension.swift */; };
 		A0CB268E2556533C0081FB3B /* HomeMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB268D2556533C0081FB3B /* HomeMoviesView.swift */; };
 		A0CB2693255655A60081FB3B /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CB2692255655A60081FB3B /* MovieTableViewCell.swift */; };
-		A0E72F082556405900B9E4D4 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E72F072556405900B9E4D4 /* Services.swift */; };
+		A0E72F082556405900B9E4D4 /* RequestsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E72F072556405900B9E4D4 /* RequestsManager.swift */; };
 		A0E72F0D255640D100B9E4D4 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E72F0C255640D100B9E4D4 /* HomeViewModel.swift */; };
 		A0E72F12255646E800B9E4D4 /* FetchMoviesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E72F11255646E800B9E4D4 /* FetchMoviesResponse.swift */; };
 		A0E72F1A2556471C00B9E4D4 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E72F192556471C00B9E4D4 /* Movie.swift */; };
@@ -61,7 +61,6 @@
 		A00E9C832556369600E2674C /* iOSChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00E9C862556369600E2674C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A00E9C882556369600E2674C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A00E9C902556369600E2674C /* iOSChallenge.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iOSChallenge.xcdatamodel; sourceTree = "<group>"; };
 		A00E9C922556369800E2674C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A00E9C952556369800E2674C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A00E9C972556369800E2674C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +71,7 @@
 		A00E9CAB2556369900E2674C /* iOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSChallengeUITests.swift; sourceTree = "<group>"; };
 		A00E9CAD2556369900E2674C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A00E9CCB2556372700E2674C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A0237384255B773300B161D5 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		A041784925596D1200D47C97 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPIURL.swift; sourceTree = "<group>"; };
 		A0C358DA255888CF0084B470 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 		A0C358E92558AC2F0084B470 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		A0CB268D2556533C0081FB3B /* HomeMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMoviesView.swift; sourceTree = "<group>"; };
 		A0CB2692255655A60081FB3B /* MovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTableViewCell.swift; sourceTree = "<group>"; };
-		A0E72F072556405900B9E4D4 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		A0E72F072556405900B9E4D4 /* RequestsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsManager.swift; sourceTree = "<group>"; };
 		A0E72F0C255640D100B9E4D4 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A0E72F11255646E800B9E4D4 /* FetchMoviesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchMoviesResponse.swift; sourceTree = "<group>"; };
 		A0E72F192556471C00B9E4D4 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -167,7 +167,6 @@
 				A00E9C922556369800E2674C /* Assets.xcassets */,
 				A00E9C942556369800E2674C /* LaunchScreen.storyboard */,
 				A00E9C972556369800E2674C /* Info.plist */,
-				A00E9C8F2556369600E2674C /* iOSChallenge.xcdatamodeld */,
 			);
 			path = iOSChallenge;
 			sourceTree = "<group>";
@@ -218,6 +217,24 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		A0237389255B774C00B161D5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A0C358E92558AC2F0084B470 /* UIImageViewExtension.swift */,
+				A0237384255B773300B161D5 /* UIButtonExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A023738A255B775200B161D5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				A0ECDFA1255A3CE000993ADD /* CoreDataManager.swift */,
+				A0E72F072556405900B9E4D4 /* RequestsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		A041784825596CF600D47C97 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,10 +255,9 @@
 		A0E72F062556404400B9E4D4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A0E72F072556405900B9E4D4 /* Services.swift */,
-				A0C358E92558AC2F0084B470 /* UIImageViewExtension.swift */,
+				A023738A255B775200B161D5 /* Managers */,
+				A0237389255B774C00B161D5 /* Extensions */,
 				A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */,
-				A0ECDFA1255A3CE000993ADD /* CoreDataManager.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -504,10 +520,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0CB2693255655A60081FB3B /* MovieTableViewCell.swift in Sources */,
-				A0E72F082556405900B9E4D4 /* Services.swift in Sources */,
+				A0E72F082556405900B9E4D4 /* RequestsManager.swift in Sources */,
 				A0E72F0D255640D100B9E4D4 /* HomeViewModel.swift in Sources */,
 				A041784A25596D1200D47C97 /* FavoriteButton.swift in Sources */,
 				A0C358DB255888CF0084B470 /* DetailViewController.swift in Sources */,
+				A0237385255B773300B161D5 /* UIButtonExtension.swift in Sources */,
 				A0C358EA2558AC2F0084B470 /* UIImageViewExtension.swift in Sources */,
 				A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */,
 				A0E72F12255646E800B9E4D4 /* FetchMoviesResponse.swift in Sources */,
@@ -519,7 +536,6 @@
 				A00E9C892556369600E2674C /* SceneDelegate.swift in Sources */,
 				A0E72F1A2556471C00B9E4D4 /* Movie.swift in Sources */,
 				A0ECDFA2255A3CE000993ADD /* CoreDataManager.swift in Sources */,
-				A00E9C912556369600E2674C /* iOSChallenge.xcdatamodeld in Sources */,
 				A0ECDFBF255A52D300993ADD /* MovieCoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -847,16 +863,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A00E9C8F2556369600E2674C /* iOSChallenge.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				A00E9C902556369600E2674C /* iOSChallenge.xcdatamodel */,
-			);
-			currentVersion = A00E9C902556369600E2674C /* iOSChallenge.xcdatamodel */;
-			path = iOSChallenge.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		A0ECDFBD255A52D300993ADD /* MovieCoreData.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

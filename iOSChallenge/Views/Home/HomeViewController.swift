@@ -58,6 +58,10 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HomeViewModelDelegate {
+    func didFinishFetchingFavoritedMoviesIDs(_ favoritedMoviesIDs: [Int]) {
+        self.homeMoviesView.favoritedMoviesIds = favoritedMoviesIDs
+    }
+    
     func didFinishFetching(_ response: FetchMoviesResponse) {
         self.homeMoviesView.setMovies(page: response.page, movies: response.movies)
         self.homeMoviesView.currentPage = response.page

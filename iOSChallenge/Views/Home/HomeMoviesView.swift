@@ -25,6 +25,14 @@ class HomeMoviesView: UIView {
             }
         }
     }
+    
+    var favoritedMoviesIds: [Int] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.moviesTableView.reloadData()
+            }
+        }
+    }
 
     lazy var moviesTableView: UITableView = { [unowned self] in
         let obj = UITableView()
@@ -73,6 +81,7 @@ extension HomeMoviesView: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let movie = self.movies[indexPath.row]
+        cell.isFavorite = self.favoritedMoviesIds.contains(movie.id) ? true : false
         cell.setupCellContent(movie)
         return cell
     }

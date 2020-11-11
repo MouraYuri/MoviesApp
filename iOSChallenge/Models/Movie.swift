@@ -24,14 +24,4 @@ struct Movie: Codable {
         case overview
         case releaseDate = "release_date"
     }
-    
-    init(managedObj: NSManagedObject) {
-        self.title = managedObj.value(forKey: "title") as? String ?? "An error has ocurred"
-        self.voteAverage = managedObj.value(forKey: "voteAverage") as? Double ?? 0.0
-        self.releaseDate = managedObj.value(forKey: "releaseDate") as? String ?? "An error has ocurred"
-        self.id = managedObj.value(forKey: "id") as? Int ?? 0
-        self.overview = managedObj.value(forKey: "overview") as? String ?? "An error has ocurred"
-        self.posterPath = managedObj.value(forKey: "posterPath") as? String ?? "An error has ocurred"
-        self.backdropPath = managedObj.value(forKey: "backdropPath") as? String ?? "An error has ocurred"
-    }
 }

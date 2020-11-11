@@ -12,6 +12,8 @@ class MoviesTableViewCell: UITableViewCell {
 
     static let identifier = "MoviesTableViewCell"
     
+    var isFavorite: Bool = false
+    
     lazy var moviePosterImageViewContainer: UIView = {
         let obj = UIView()
         obj.translatesAutoresizingMaskIntoConstraints = false
@@ -81,6 +83,7 @@ class MoviesTableViewCell: UITableViewCell {
         self.moviePosterImageView.setImage(url: .getMovieImage, path: movie.posterPath)
         
         self.movieReleaseDateLabel.text = self.getMovieReleaseDateText(movieReleaseDate: movie.releaseDate)
+        self.setFavoriteButtonImage()
     }
     
     func getMovieReleaseDateText(movieReleaseDate: String) -> String{
@@ -95,6 +98,11 @@ class MoviesTableViewCell: UITableViewCell {
             retString.append("⭐")
         }
         return retString == "" ? "⭐" : retString
+    }
+    
+    func setFavoriteButtonImage(){
+        let img = self.isFavorite ? UIImage(named: "Favorite") : UIImage(named: "Not-Favorite")
+        self.favoriteButton.setImageAndTint(img, withColor: .red)
     }
     
     func setupConstraints(){
