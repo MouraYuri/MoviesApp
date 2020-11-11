@@ -77,7 +77,11 @@ class DetailViewController: UIViewController {
     }
     
     func setupViewControllerContent(movie: Movie){
-        self.movieBackdropImageView.setImage(url: .getMovieImage, path: movie.backdropPath)
+        if movie.backdropPath == nil {
+            self.movieBackdropImageView.isHidden = true
+        } else {
+            self.movieBackdropImageView.setImage(url: .getMovieImage, path: movie.backdropPath)
+        }
         self.moviePosterImageView.setImage(url: .getMovieImage, path: movie.posterPath)
         self.movieInfosView.setupMovieInfosContent(movie)
         self.synopsisTextView.text = movie.overview

@@ -7,6 +7,6 @@
 
 import Foundation
 enum MoviesAPIURL: String {
-    case moviesNowPlaying = "https://api.themoviedb.org/3/movie/now_playing?api_key=c2e78b4a8c14e65dd6e27504e6df95ad&language=pt-br"
-    case getMovieImage = "https://image.tmdb.org/t/p/w500"
+    case moviesNowPlaying = "https://api.themoviedb.org/3/movie/now_playing?api_key=c2e78b4a8c14e65dd6e27504e6df95ad&language=pt-br&region=BR"
+    case getMovieImage = "https://image.tmdb.org/t/p/w200"
 }
