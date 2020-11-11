@@ -8,9 +8,9 @@ import CoreData
 
 import Foundation
 struct Movie: Codable {
-    let posterPath: String
+    let posterPath: String?
     let id: Int
-    let backdropPath: String
+    let backdropPath: String?
     let title: String
     let voteAverage: Double
     let overview, releaseDate: String

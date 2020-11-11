@@ -20,8 +20,8 @@ class HomeViewModel {
     var moviesURL = MoviesAPIURL.moviesNowPlaying.rawValue
     
     func fetchMovies(page: Int = 1){
-        self.moviesURL += "&page=\(page)"
-        RequestsManager.shared.makeRequest(to: moviesURL, method: .get) { [weak self] (data, error) in
+        let requestURL = self.moviesURL + "&page=\(page)"
+        RequestsManager.shared.makeRequest(to: requestURL, method: .get) { [weak self] (data, error) in
             guard let data = data else { return }
             do {
                 let decoder = JSONDecoder()
