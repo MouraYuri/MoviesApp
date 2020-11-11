@@ -73,8 +73,8 @@ extension HomeViewController: HomeMoviesViewDelegate {
         self.viewModel.fetchMovies(page: currentPage+1)
     }
     
-    func didSelectAFilm(movie: Movie) {
-        let detailViewController = DetailViewController(movie)
+    func didSelectAMovie(_ movie: Movie, movieFavoriteStatus: Bool) {
+        let detailViewController = DetailViewController(movie, movieFavoriteStatus: movieFavoriteStatus)
         self.navigationController?.pushViewController(detailViewController, animated: true)
     }
 }

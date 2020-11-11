@@ -23,4 +23,21 @@ class DetailViewModel {
             }
         }
     }
+    
+    func unfavoriteMovie(movie: Movie) {
+        let context = CoreDataManager.shared.persistentContainer.viewContext
+        
+        let request = NSFetchRequest<NSManagedObject>(entityName: "MovieCoreData")
+        request.predicate = NSPredicate.init(format: "id==\(movie.id)")
+        do {
+            let moviesManagedObjectsArray = try context.fetch(request)
+            guard let movieManagedObject = moviesManagedObjectsArray.first else {
+                return
+            }
+            context.delete(movieManagedObject)
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
 }

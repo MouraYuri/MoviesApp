@@ -14,8 +14,11 @@ class DetailViewController: UIViewController {
     
     let movie: Movie
     
-    init(_ movie: Movie) {
+    var isFavorite: Bool
+    
+    init(_ movie: Movie, movieFavoriteStatus: Bool) {
         self.movie = movie
+        self.isFavorite = movieFavoriteStatus
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -39,6 +42,7 @@ class DetailViewController: UIViewController {
     lazy var favoriteButton: FavoriteButton = { [unowned self] in
         let obj = FavoriteButton()
         obj.addTouchTarget(self, selector: #selector(didPressFavoriteButton(sender:)))
+        obj.changeButtonInterface(favoriteStatus: self.isFavorite)
         obj.translatesAutoresizingMaskIntoConstraints = false
         obj.isUserInteractionEnabled = true
         return obj
@@ -123,7 +127,9 @@ class DetailViewController: UIViewController {
     }
     
     @objc func didPressFavoriteButton(sender: FavoriteButton){
-        self.favoriteButton.updateFavorite()
-        self.viewModel.favoriteMovie(movie: self.movie)
+        self.isFavorite = !(self.isFavorite)
+        self.favoriteButton.changeButtonInterface(favoriteStatus: self.isFavorite)
+        self.isFavorite ? self.viewModel.favoriteMovie(movie: self.movie) : self.viewModel.unfavoriteMovie(movie: self.movie)
+        
     }
 }

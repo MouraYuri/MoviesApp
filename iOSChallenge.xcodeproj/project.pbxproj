@@ -18,6 +18,7 @@
 		A00E9CAC2556369900E2674C /* iOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CAB2556369900E2674C /* iOSChallengeUITests.swift */; };
 		A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CCB2556372700E2674C /* HomeViewController.swift */; };
 		A0237385255B773300B161D5 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0237384255B773300B161D5 /* UIButtonExtension.swift */; };
+		A0237390255B7CA900B161D5 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A023738F255B7CA900B161D5 /* RequestMethod.swift */; };
 		A041784A25596D1200D47C97 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041784925596D1200D47C97 /* FavoriteButton.swift */; };
 		A09E86AF2556EE3A0039A4CA /* MoviesAPIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */; };
 		A0C358DB255888CF0084B470 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C358DA255888CF0084B470 /* DetailViewController.swift */; };
@@ -72,6 +73,7 @@
 		A00E9CAD2556369900E2674C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A00E9CCB2556372700E2674C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A0237384255B773300B161D5 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
+		A023738F255B7CA900B161D5 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		A041784925596D1200D47C97 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPIURL.swift; sourceTree = "<group>"; };
 		A0C358DA255888CF0084B470 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,15 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		A023738E255B7C9500B161D5 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */,
+				A023738F255B7CA900B161D5 /* RequestMethod.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
 		A041784825596CF600D47C97 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,9 +266,9 @@
 		A0E72F062556404400B9E4D4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A023738E255B7C9500B161D5 /* Enums */,
 				A023738A255B775200B161D5 /* Managers */,
 				A0237389255B774C00B161D5 /* Extensions */,
-				A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -533,6 +544,7 @@
 				A0C358E52558A9A10084B470 /* MovieInfosView.swift in Sources */,
 				A0CB268E2556533C0081FB3B /* HomeMoviesView.swift in Sources */,
 				A0ECDFB6255A44D900993ADD /* DetailViewModel.swift in Sources */,
+				A0237390255B7CA900B161D5 /* RequestMethod.swift in Sources */,
 				A00E9C892556369600E2674C /* SceneDelegate.swift in Sources */,
 				A0E72F1A2556471C00B9E4D4 /* Movie.swift in Sources */,
 				A0ECDFA2255A3CE000993ADD /* CoreDataManager.swift in Sources */,
