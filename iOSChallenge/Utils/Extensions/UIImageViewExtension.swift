@@ -16,4 +16,9 @@ extension UIImageView {
             self.sd_setImage(with: url, completed: nil)
         }
     }
+    
+    func setImageAndTint(_ img: UIImage?, withColor color:UIColor) {
+        self.image = img?.withRenderingMode(.alwaysTemplate)
+        self.tintColor = color
+    }
 }

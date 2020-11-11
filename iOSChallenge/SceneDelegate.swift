@@ -26,8 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         
         window.makeKeyAndVisible()
-        
-        CoreDataManager.shared.saveContext()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
