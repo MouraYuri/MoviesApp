@@ -78,11 +78,11 @@ class MovieInfosView: UIView {
     
     func getMovieRatingText(rating: Double) -> String {
         let numberOfStars = Int(rating/2)
-        var retString = "Avaliação: "
+        var retString = ""
         for _ in 0..<numberOfStars {
             retString.append("⭐")
         }
-        return retString == "Avaliação: " ? "Avaliação: ⭐" : retString
+        return retString == "" ? "⭐" : retString
     }
     
     func getMovieReleaseDateText(movieReleaseDate: String) -> String{
