@@ -78,8 +78,8 @@ class DetailViewController: UIViewController {
     }
     
     func setupViewControllerContent(movie: Movie){
-        self.movieBackdropImageView.setImage(url: .getMovieImage, path: movie.backdropPath)
-        self.moviePosterImageView.setImage(url: .getMovieImage, path: movie.posterPath)
+        self.movieBackdropImageView.setImage(path: movie.backdropPath)
+        self.moviePosterImageView.setImage(path: movie.posterPath)
         self.movieInfosView.setupMovieInfosContent(movie)
         self.synopsisTextView.text = getSynopsisText(from: movie)
     }

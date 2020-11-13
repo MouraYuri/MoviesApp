@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 
 extension UIImageView {
-    func setImage(url: MoviesAPIURL, path: String?) {
+    func setImage(path: String?) {
         if let path = path {
             let url = URL(string: MoviesAPIURL.getMovieImage.rawValue + path)
             self.sd_setImage(with: url, completed: nil)

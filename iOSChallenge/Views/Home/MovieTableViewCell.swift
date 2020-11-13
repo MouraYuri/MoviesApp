@@ -14,7 +14,7 @@ class MoviesTableViewCell: UITableViewCell {
     
     var isFavorite: Bool = false
     
-    lazy var moviePosterImageViewContainer: UIView = {
+    lazy var moviePosterContainer: UIView = {
         let obj = UIView()
         obj.translatesAutoresizingMaskIntoConstraints = false
         obj.layer.shadowColor = UIColor.black.cgColor
@@ -80,7 +80,7 @@ class MoviesTableViewCell: UITableViewCell {
     func setupCellContent(_ movie: Movie) {
         self.movieTitleLabel.text = movie.title
         self.movieRatingLabel.text = self.getMovieRatingText(rating: movie.voteAverage)
-        self.moviePosterImageView.setImage(url: .getMovieImage, path: movie.posterPath)
+        self.moviePosterImageView.setImage(path: movie.posterPath)
         
         self.movieReleaseDateLabel.text = self.getMovieReleaseDateText(movieReleaseDate: movie.releaseDate)
         self.setFavoriteButtonImage()
@@ -106,8 +106,8 @@ class MoviesTableViewCell: UITableViewCell {
     }
     
     func setupConstraints(){
-        self.contentView.addSubview(self.moviePosterImageViewContainer)
-        self.moviePosterImageViewContainer.addSubview(self.moviePosterImageView)
+        self.contentView.addSubview(self.moviePosterContainer)
+        self.moviePosterContainer.addSubview(self.moviePosterImageView)
         self.contentView.addSubview(self.movieTitleLabel)
         self.contentView.addSubview(self.movieReleaseDateLabel)
         self.contentView.addSubview(self.movieRatingLabel)
@@ -116,17 +116,17 @@ class MoviesTableViewCell: UITableViewCell {
         let distanceFromMoviePoster = CGFloat(16)
         
         NSLayoutConstraint.activate([
-            self.moviePosterImageViewContainer.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.moviePosterImageViewContainer.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
-            self.moviePosterImageViewContainer.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.8),
-            self.moviePosterImageViewContainer.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.25),
+            self.moviePosterContainer.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
+            self.moviePosterContainer.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.moviePosterContainer.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.8),
+            self.moviePosterContainer.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.25),
         ])
         
         NSLayoutConstraint.activate([
-            self.moviePosterImageView.topAnchor.constraint(equalTo: self.moviePosterImageViewContainer.topAnchor),
-            self.moviePosterImageView.bottomAnchor.constraint(equalTo: self.moviePosterImageViewContainer.bottomAnchor),
-            self.moviePosterImageView.leadingAnchor.constraint(equalTo: self.moviePosterImageViewContainer.leadingAnchor),
-            self.moviePosterImageView.trailingAnchor.constraint(equalTo: self.moviePosterImageViewContainer.trailingAnchor),
+            self.moviePosterImageView.topAnchor.constraint(equalTo: self.moviePosterContainer.topAnchor),
+            self.moviePosterImageView.bottomAnchor.constraint(equalTo: self.moviePosterContainer.bottomAnchor),
+            self.moviePosterImageView.leadingAnchor.constraint(equalTo: self.moviePosterContainer.leadingAnchor),
+            self.moviePosterImageView.trailingAnchor.constraint(equalTo: self.moviePosterContainer.trailingAnchor),
         ])
         
         NSLayoutConstraint.activate([
