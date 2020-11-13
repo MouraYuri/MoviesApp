@@ -3,23 +3,4 @@
    uuid = "4606010C-82A6-4588-939C-2A8EF307A753"
    type = "0"
    version = "2.0">
-   <Breakpoints>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "620E4C28-218E-4A1A-BDE8-DA28C3EA94D2"
-            shouldBeEnabled = "Yes"
-            condition = "movie.id == 758132"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "iOSChallenge/Views/Home/MovieTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "setupCellContent(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-   </Breakpoints>
 </Bucket>

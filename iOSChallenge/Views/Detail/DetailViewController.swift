@@ -74,17 +74,14 @@ class DetailViewController: UIViewController {
     func setupViewController(){
         self.view.backgroundColor = UIColor(named: "MAIN_COLOR")
         self.title = "Detalhes"
+        self.movieBackdropImageView.isHidden = self.movie.backdropPath == nil ? true : false
     }
     
     func setupViewControllerContent(movie: Movie){
-        if movie.backdropPath == nil {
-            self.movieBackdropImageView.isHidden = true
-        } else {
-            self.movieBackdropImageView.setImage(url: .getMovieImage, path: movie.backdropPath)
-        }
+        self.movieBackdropImageView.setImage(url: .getMovieImage, path: movie.backdropPath)
         self.moviePosterImageView.setImage(url: .getMovieImage, path: movie.posterPath)
         self.movieInfosView.setupMovieInfosContent(movie)
-        self.synopsisTextView.text = movie.overview
+        self.synopsisTextView.text = getSynopsisText(from: movie)
     }
     
     func setupConstraints(){
@@ -135,5 +132,9 @@ class DetailViewController: UIViewController {
         self.favoriteButton.changeButtonInterface(favoriteStatus: self.isFavorite)
         self.isFavorite ? self.viewModel.favoriteMovie(movie: self.movie) : self.viewModel.unfavoriteMovie(movie: self.movie)
         
+    }
+    
+    func getSynopsisText(from movie: Movie) -> String {
+        return movie.overview == "" ? "Sinopse não disponível." : movie.overview
     }
 }
