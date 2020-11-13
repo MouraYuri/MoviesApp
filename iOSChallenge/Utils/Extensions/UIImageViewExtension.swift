@@ -15,7 +15,7 @@ extension UIImageView {
             let url = URL(string: MoviesAPIURL.getMovieImage.rawValue + path)
             self.sd_setImage(with: url, completed: nil)
         } else {
-            self.image = UIImage(named: "NoImageFound")
+            self.image = UIImage(named: "no-image")
         }
     }
     
