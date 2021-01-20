@@ -11,24 +11,29 @@ import CoreData
 protocol HomeViewModelDelegate: class {
     func didFinishFetching(_ response: FetchMoviesResponse)
     func didFinishFetchingFavoritedMoviesIDs(_ favoritedMoviesIDs: [Int])
+    func didFinishFetchingWithError(_ error: Error)
 }
 
 class HomeViewModel {
     
     weak var delegate: HomeViewModelDelegate?
     
-    var moviesURL = MoviesAPIURL.moviesNowPlaying.rawValue
+    var moviesURL = MoviesAPIURL.popularMovies.rawValue
     
     func fetchMovies(page: Int = 1){
         let requestURL = self.moviesURL + "&page=\(page)"
-        RequestsManager.shared.makeRequest(to: requestURL, method: .get) { [weak self] (data, error) in
-            guard let data = data else { return }
-            do {
+        RequestsManager.shared.makeRequest(to: requestURL, method: .get) { [weak self] (result) in
+            switch result {
+            case .success(let data):
                 let decoder = JSONDecoder()
-                let response = try decoder.decode(FetchMoviesResponse.self, from: data)
-                self?.delegate?.didFinishFetching(response)
-            } catch {
-                print(error)
+                do {
+                    let response = try decoder.decode(FetchMoviesResponse.self, from: data)
+                    self?.delegate?.didFinishFetching(response)
+                } catch {
+                    self?.delegate?.didFinishFetchingWithError(error)
+                }
+            case .failure(let error):
+                self?.delegate?.didFinishFetchingWithError(error)
             }
         }
     }
@@ -42,7 +47,7 @@ class HomeViewModel {
             let favoritedMoviesIDs = self.parseManagedObjectsToMoviesIDs(managedObjects: managedObjectMovies)
             self.delegate?.didFinishFetchingFavoritedMoviesIDs(favoritedMoviesIDs)
         }catch {
-            print(error)
+            self.delegate?.didFinishFetchingWithError(error)
         }
     }
     

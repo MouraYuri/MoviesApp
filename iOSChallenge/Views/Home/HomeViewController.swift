@@ -34,13 +34,13 @@ class HomeViewController: UIViewController {
     }
     
     func setupViewController(){
-        self.view.backgroundColor = UIColor(named: "MAIN_COLOR")
+        self.view.backgroundColor = UIColor.mainColor
         self.title = "Home"
         self.setupNavigationBar()
     }
     
     func setupNavigationBar(){
-        self.navigationController?.navigationBar.barTintColor = UIColor(named: "MAIN_COLOR")
+        self.navigationController?.navigationBar.barTintColor = UIColor.mainColor
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
@@ -58,6 +58,10 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HomeViewModelDelegate {
+    func didFinishFetchingWithError(_ error: Error) {
+        
+    }
+    
     func didFinishFetchingFavoritedMoviesIDs(_ favoritedMoviesIDs: [Int]) {
         self.homeMoviesView.favoritedMoviesIds = favoritedMoviesIDs
     }

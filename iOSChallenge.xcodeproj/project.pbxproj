@@ -19,6 +19,7 @@
 		A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9CCB2556372700E2674C /* HomeViewController.swift */; };
 		A0237385255B773300B161D5 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0237384255B773300B161D5 /* UIButtonExtension.swift */; };
 		A0237390255B7CA900B161D5 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A023738F255B7CA900B161D5 /* RequestMethod.swift */; };
+		A02B5C3B25B7CB6100B210AE /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02B5C3A25B7CB6100B210AE /* UIColorExtension.swift */; };
 		A041784A25596D1200D47C97 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041784925596D1200D47C97 /* FavoriteButton.swift */; };
 		A09E86AF2556EE3A0039A4CA /* MoviesAPIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */; };
 		A0C358DB255888CF0084B470 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C358DA255888CF0084B470 /* DetailViewController.swift */; };
@@ -74,6 +75,7 @@
 		A00E9CCB2556372700E2674C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A0237384255B773300B161D5 /* UIButtonExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		A023738F255B7CA900B161D5 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
+		A02B5C3A25B7CB6100B210AE /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A041784925596D1200D47C97 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
 		A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPIURL.swift; sourceTree = "<group>"; };
 		A0C358DA255888CF0084B470 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 			children = (
 				A0C358E92558AC2F0084B470 /* UIImageViewExtension.swift */,
 				A0237384255B773300B161D5 /* UIButtonExtension.swift */,
+				A02B5C3A25B7CB6100B210AE /* UIColorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,6 +249,13 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
+		A02B5C3925B7CB0D00B210AE /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		A041784825596CF600D47C97 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,6 +276,7 @@
 		A0E72F062556404400B9E4D4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A02B5C3925B7CB0D00B210AE /* Helpers */,
 				A023738E255B7C9500B161D5 /* Enums */,
 				A023738A255B775200B161D5 /* Managers */,
 				A0237389255B774C00B161D5 /* Extensions */,
@@ -537,6 +548,7 @@
 				A0C358DB255888CF0084B470 /* DetailViewController.swift in Sources */,
 				A0237385255B773300B161D5 /* UIButtonExtension.swift in Sources */,
 				A0C358EA2558AC2F0084B470 /* UIImageViewExtension.swift in Sources */,
+				A02B5C3B25B7CB6100B210AE /* UIColorExtension.swift in Sources */,
 				A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */,
 				A0E72F12255646E800B9E4D4 /* FetchMoviesResponse.swift in Sources */,
 				A09E86AF2556EE3A0039A4CA /* MoviesAPIURL.swift in Sources */,

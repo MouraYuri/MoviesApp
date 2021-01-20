@@ -81,7 +81,6 @@ class MoviesTableViewCell: UITableViewCell {
         self.movieTitleLabel.text = movie.title
         self.movieRatingLabel.text = self.getMovieRatingText(rating: movie.voteAverage)
         self.moviePosterImageView.setImage(path: movie.posterPath)
-        
         self.movieReleaseDateLabel.text = self.getMovieReleaseDateText(movieReleaseDate: movie.releaseDate)
         self.setFavoriteButtonImage()
     }

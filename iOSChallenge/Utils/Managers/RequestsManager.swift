@@ -13,7 +13,7 @@ class RequestsManager {
     
     private init() {}
     
-    func makeRequest(to url: String, method: RequestMethod, completion: @escaping (Data?, String?) -> Void ) {
+    func makeRequest(to url: String, method: RequestMethod, completion: @escaping (Result<Data,Error>) -> Void ) {
         
         guard let parsedURL = URL(string: url) else {
             return
@@ -23,13 +23,14 @@ class RequestsManager {
         let session = URLSession.shared
         request.httpMethod = method.rawValue
         
-        
         session.dataTask(with: request) { (data, response, error) in
-            guard let _ = error else {
-                completion(data, nil)
+            guard let error = error else {
+                if let data = data {
+                    completion(.success(data))
+                }
                 return
             }
-            completion(nil, error.debugDescription)
+            completion(.failure(error))
             return
         }.resume()
         
