@@ -21,7 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navigationController = UINavigationController(rootViewController: viewController)
         
-        window.rootViewController = navigationController
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [navigationController, FavoritesViewController()]
+        window.rootViewController = tabBarController
         
         self.window = window
         
