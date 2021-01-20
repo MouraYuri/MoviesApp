@@ -49,7 +49,7 @@ class HomeViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             self.homeMoviesView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.homeMoviesView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.95),
+            self.homeMoviesView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.93),
             self.homeMoviesView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.homeMoviesView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])

@@ -36,8 +36,9 @@ class HomeMoviesView: UIView {
 
     lazy var moviesCollectionView: UICollectionView = { [unowned self] in
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/3)
+        let horizontalEdgeInsets = CGFloat(8)
+        layout.sectionInset = UIEdgeInsets(top: 4.0, left: horizontalEdgeInsets, bottom: 0, right: horizontalEdgeInsets)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2.5, height: UIScreen.main.bounds.height/3)
         layout.scrollDirection = .vertical
         
         let obj = UICollectionView(frame: self.frame, collectionViewLayout: layout)
@@ -83,7 +84,10 @@ extension HomeMoviesView: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = self.moviesCollectionView.dequeueReusableCell(withReuseIdentifier: MoviesCollectionViewCell.identifier, for: indexPath)
         let movie = self.movies[indexPath.row]
         if let customCell = cell as? MoviesCollectionViewCell {
-            customCell.setupCellContent(movie)
+            let movieIsFavorited = self.favoritedMoviesIds.contains { (id) -> Bool in
+                movie.id == id
+            }
+            customCell.setupCellContent(movie, isFavorite: movieIsFavorited)
         }
         return cell
     }

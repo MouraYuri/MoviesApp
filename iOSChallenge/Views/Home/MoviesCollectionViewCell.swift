@@ -76,9 +76,10 @@ class MoviesCollectionViewCell: UICollectionViewCell {
         self.backgroundColor = .clear
     }
     
-    func setupCellContent(_ movie: Movie) {
+    func setupCellContent(_ movie: Movie, isFavorite: Bool) {
         self.movieTitleLabel.text = movie.title
         self.moviePosterImageView.setImage(path: movie.posterPath)
+        self.isFavorite = isFavorite
         self.setFavoriteButtonImage()
     }
     
