@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController {
     
@@ -21,11 +22,19 @@ class HomeViewController: UIViewController {
         obj.delegate = self
         return obj
     }()
+    
+    lazy var loadingIndicatorView: NVActivityIndicatorView = {
+        let rect = CGRect(x: 0, y: 0, width: 40, height: 40)
+        let obj = NVActivityIndicatorView(frame: rect, type: .cubeTransition, color: UIColor.white, padding: nil)
+        obj.translatesAutoresizingMaskIntoConstraints = false
+        return obj
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupConstraints()
         self.setupViewController()
+        self.loadingIndicatorView.startAnimating()
         self.viewModel.fetchMovies()
     }
     
@@ -46,6 +55,7 @@ class HomeViewController: UIViewController {
     
     func setupConstraints() {
         self.view.addSubview(self.homeMoviesView)
+        self.view.addSubview(self.loadingIndicatorView)
         
         NSLayoutConstraint.activate([
             self.homeMoviesView.topAnchor.constraint(equalTo: self.view.topAnchor),
@@ -53,13 +63,18 @@ class HomeViewController: UIViewController {
             self.homeMoviesView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
             self.homeMoviesView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
+        
+        NSLayoutConstraint.activate([
+            self.loadingIndicatorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.loadingIndicatorView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
     }
 
 }
 
 extension HomeViewController: HomeViewModelDelegate {
     func didFinishFetchingWithError(_ error: Error) {
-        
+        self.loadingIndicatorView.stopAnimating()
     }
     
     func didFinishFetchingFavoritedMoviesIDs(_ favoritedMoviesIDs: [Int]) {
@@ -67,6 +82,9 @@ extension HomeViewController: HomeViewModelDelegate {
     }
     
     func didFinishFetching(_ response: FetchMoviesResponse) {
+        DispatchQueue.main.async {
+            self.loadingIndicatorView.stopAnimating()
+        }
         self.homeMoviesView.setMovies(page: response.page, movies: response.movies)
         self.homeMoviesView.currentPage = response.page
     }

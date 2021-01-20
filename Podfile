@@ -7,6 +7,7 @@ target 'iOSChallenge' do
 
   # Pods for iOSChallenge
 	pod 'SDWebImage'
+	pod 'NVActivityIndicatorView'
 
   target 'iOSChallengeTests' do
     inherit! :search_paths
