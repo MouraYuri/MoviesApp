@@ -94,10 +94,8 @@ class MoviesTableViewCell: UITableViewCell {
     func getMovieRatingText(rating: Double) -> String {
         let numberOfStars = Int(rating/2)
         var retString = ""
-        for _ in 0..<numberOfStars {
-            retString.append("⭐")
-        }
-        return retString == "" ? "⭐" : retString
+        for _ in 0..<numberOfStars { retString.append("⭐") }
+        return retString.isEmpty ? "⭐" : retString
     }
     
     func setFavoriteButtonImage(){
