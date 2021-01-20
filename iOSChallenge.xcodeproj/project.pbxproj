@@ -21,6 +21,8 @@
 		A0237390255B7CA900B161D5 /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A023738F255B7CA900B161D5 /* RequestMethod.swift */; };
 		A02B5C3B25B7CB6100B210AE /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02B5C3A25B7CB6100B210AE /* UIColorExtension.swift */; };
 		A041784A25596D1200D47C97 /* FavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041784925596D1200D47C97 /* FavoriteButton.swift */; };
+		A0436B0925B86DD30069ECEA /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0436B0825B86DD30069ECEA /* CustomTabBarController.swift */; };
+		A0436B0E25B8C3DA0069ECEA /* FavoritesMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0436B0D25B8C3DA0069ECEA /* FavoritesMovieTableViewCell.swift */; };
 		A09AC63625B7EF3C00EA26EB /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09AC63525B7EF3C00EA26EB /* FavoritesViewModel.swift */; };
 		A09AC63B25B7EF6D00EA26EB /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09AC63A25B7EF6D00EA26EB /* FavoritesViewController.swift */; };
 		A09E86AF2556EE3A0039A4CA /* MoviesAPIURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */; };
@@ -79,6 +81,8 @@
 		A023738F255B7CA900B161D5 /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
 		A02B5C3A25B7CB6100B210AE /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		A041784925596D1200D47C97 /* FavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteButton.swift; sourceTree = "<group>"; };
+		A0436B0825B86DD30069ECEA /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
+		A0436B0D25B8C3DA0069ECEA /* FavoritesMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMovieTableViewCell.swift; sourceTree = "<group>"; };
 		A09AC63525B7EF3C00EA26EB /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		A09AC63A25B7EF6D00EA26EB /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		A09E86AE2556EE3A0039A4CA /* MoviesAPIURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesAPIURL.swift; sourceTree = "<group>"; };
@@ -169,7 +173,7 @@
 				A00E9CCA2556371400E2674C /* ViewModels */,
 				A00E9CC92556370F00E2674C /* Models */,
 				A00E9CC82556370700E2674C /* Views */,
-				A041784825596CF600D47C97 /* Components */,
+				A041784825596CF600D47C97 /* Custom Components */,
 				A00E9C862556369600E2674C /* AppDelegate.swift */,
 				A00E9C882556369600E2674C /* SceneDelegate.swift */,
 				A00E9C922556369800E2674C /* Assets.xcassets */,
@@ -262,18 +266,20 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		A041784825596CF600D47C97 /* Components */ = {
+		A041784825596CF600D47C97 /* Custom Components */ = {
 			isa = PBXGroup;
 			children = (
 				A041784925596D1200D47C97 /* FavoriteButton.swift */,
+				A0436B0825B86DD30069ECEA /* CustomTabBarController.swift */,
 			);
-			path = Components;
+			path = "Custom Components";
 			sourceTree = "<group>";
 		};
 		A09AC63425B7EF1D00EA26EB /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
 				A09AC63A25B7EF6D00EA26EB /* FavoritesViewController.swift */,
+				A0436B0D25B8C3DA0069ECEA /* FavoritesMovieTableViewCell.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -561,11 +567,13 @@
 				A0C358DB255888CF0084B470 /* DetailViewController.swift in Sources */,
 				A0237385255B773300B161D5 /* UIButtonExtension.swift in Sources */,
 				A0C358EA2558AC2F0084B470 /* UIImageViewExtension.swift in Sources */,
+				A0436B0E25B8C3DA0069ECEA /* FavoritesMovieTableViewCell.swift in Sources */,
 				A09AC63B25B7EF6D00EA26EB /* FavoritesViewController.swift in Sources */,
 				A02B5C3B25B7CB6100B210AE /* UIColorExtension.swift in Sources */,
 				A00E9CCC2556372700E2674C /* HomeViewController.swift in Sources */,
 				A0E72F12255646E800B9E4D4 /* FetchMoviesResponse.swift in Sources */,
 				A09E86AF2556EE3A0039A4CA /* MoviesAPIURL.swift in Sources */,
+				A0436B0925B86DD30069ECEA /* CustomTabBarController.swift in Sources */,
 				A00E9C872556369600E2674C /* AppDelegate.swift in Sources */,
 				A0C358E52558A9A10084B470 /* MovieInfosView.swift in Sources */,
 				A0CB268E2556533C0081FB3B /* HomeMoviesView.swift in Sources */,

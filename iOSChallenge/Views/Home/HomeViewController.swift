@@ -44,7 +44,6 @@ class HomeViewController: UIViewController {
     
     func setupViewController(){
         self.view.backgroundColor = UIColor.mainColor
-        self.title = "Home"
         self.setupNavigationBar()
     }
     

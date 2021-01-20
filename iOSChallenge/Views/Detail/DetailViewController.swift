@@ -73,7 +73,6 @@ class DetailViewController: UIViewController {
         self.setupConstraints()
     }
     
-    
     func setupViewController(){
         self.view.backgroundColor = UIColor.mainColor
         self.title = "Detalhes"

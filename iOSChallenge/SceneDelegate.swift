@@ -17,12 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
-        let viewController = HomeViewController()
+        let tabBarController = CustomTabBarController()
         
-        let navigationController = UINavigationController(rootViewController: viewController)
-        
-        let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [navigationController, FavoritesViewController()]
         window.rootViewController = tabBarController
         
         self.window = window
