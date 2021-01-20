@@ -10,6 +10,7 @@ import CoreData
 
 class DetailViewModel {
     
+    // MARK: Functions
     func favoriteMovie(movie: Movie) {
         let context = CoreDataManager.shared.persistentContainer.viewContext
         

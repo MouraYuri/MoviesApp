@@ -10,7 +10,10 @@ import SDWebImage
 
 class DetailViewController: UIViewController {
     
-    let viewModel = DetailViewModel()
+    lazy var viewModel: DetailViewModel = { [unowned self] in
+        let obj = DetailViewModel()
+        return obj
+    }()
     
     let movie: Movie
     
@@ -72,7 +75,7 @@ class DetailViewController: UIViewController {
     
     
     func setupViewController(){
-        self.view.backgroundColor = UIColor(named: "MAIN_COLOR")
+        self.view.backgroundColor = UIColor.mainColor
         self.title = "Detalhes"
         self.movieBackdropImageView.isHidden = self.movie.backdropPath == nil ? true : false
     }
@@ -135,6 +138,6 @@ class DetailViewController: UIViewController {
     }
     
     func getSynopsisText(from movie: Movie) -> String {
-        return movie.overview == "" ? "Sinopse não disponível." : movie.overview
+        return movie.overview.isEmpty ? "Sinopse não disponível." : movie.overview
     }
 }

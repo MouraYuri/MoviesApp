@@ -73,6 +73,12 @@ class HomeMoviesView: UIView {
             self.movies.append(contentsOf: movies)
         }
     }
+    
+    private func checkIfMovieIsFavorite(_ movie: Movie) -> Bool {
+        self.favoritedMoviesIds.contains { (id) -> Bool in
+            movie.id == id
+        }
+    }
 }
 
 extension HomeMoviesView: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -84,9 +90,7 @@ extension HomeMoviesView: UICollectionViewDelegate, UICollectionViewDataSource {
         let cell = self.moviesCollectionView.dequeueReusableCell(withReuseIdentifier: MoviesCollectionViewCell.identifier, for: indexPath)
         let movie = self.movies[indexPath.row]
         if let customCell = cell as? MoviesCollectionViewCell {
-            let movieIsFavorited = self.favoritedMoviesIds.contains { (id) -> Bool in
-                movie.id == id
-            }
+            let movieIsFavorited = self.checkIfMovieIsFavorite(movie)
             customCell.setupCellContent(movie, isFavorite: movieIsFavorited)
         }
         return cell
