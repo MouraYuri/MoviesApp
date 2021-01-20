@@ -21,7 +21,7 @@ class HomeMoviesView: UIView {
     var movies: [Movie] = [] {
         didSet {
             DispatchQueue.main.async {
-                self.moviesTableView.reloadData()
+                self.moviesCollectionView.reloadData()
             }
         }
     }
@@ -29,22 +29,25 @@ class HomeMoviesView: UIView {
     var favoritedMoviesIds: [Int] = [] {
         didSet {
             DispatchQueue.main.async {
-                self.moviesTableView.reloadData()
+                self.moviesCollectionView.reloadData()
             }
         }
     }
 
-    lazy var moviesTableView: UITableView = { [unowned self] in
-        let obj = UITableView()
+    lazy var moviesCollectionView: UICollectionView = { [unowned self] in
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/3)
+        layout.scrollDirection = .vertical
+        
+        let obj = UICollectionView(frame: self.frame, collectionViewLayout: layout)
+        obj.register(MoviesCollectionViewCell.self, forCellWithReuseIdentifier: MoviesCollectionViewCell.identifier)
+        obj.backgroundColor = .clear
         obj.translatesAutoresizingMaskIntoConstraints = false
         obj.delegate = self
         obj.dataSource = self
-        obj.backgroundColor = .clear
-        obj.separatorStyle = .none
-        obj.register(MoviesTableViewCell.self, forCellReuseIdentifier: MoviesTableViewCell.identifier)
         return obj
     }()
-
     
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -52,13 +55,13 @@ class HomeMoviesView: UIView {
     }
     
     func setupConstraints(){
-        self.addSubview(self.moviesTableView)
+        self.addSubview(self.moviesCollectionView)
         
         NSLayoutConstraint.activate([
-            self.moviesTableView.topAnchor.constraint(equalTo: self.topAnchor),
-            self.moviesTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            self.moviesTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            self.moviesTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            self.moviesCollectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            self.moviesCollectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            self.moviesCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            self.moviesCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
     
@@ -71,34 +74,29 @@ class HomeMoviesView: UIView {
     }
 }
 
-extension HomeMoviesView: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension HomeMoviesView: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.movies.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = self.moviesTableView.dequeueReusableCell(withIdentifier: MoviesTableViewCell.identifier) as? MoviesTableViewCell else {
-            return UITableViewCell()
-        }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = self.moviesCollectionView.dequeueReusableCell(withReuseIdentifier: MoviesCollectionViewCell.identifier, for: indexPath)
         let movie = self.movies[indexPath.row]
-        cell.isFavorite = self.favoritedMoviesIds.contains(movie.id)
-        cell.setupCellContent(movie)
+        if let customCell = cell as? MoviesCollectionViewCell {
+            customCell.setupCellContent(movie)
+        }
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        UIScreen.main.bounds.height/5
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == self.movies.count - 1 {
-            self.delegate?.didDisplayLastCell(currentPage: self.currentPage)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let movie = movies[indexPath.row]
         let movieFavoriteStatus = self.favoritedMoviesIds.contains(movie.id)
         self.delegate?.didSelectAMovie(movie, movieFavoriteStatus: movieFavoriteStatus)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.row == self.movies.count - 1 {
+            self.delegate?.didDisplayLastCell(currentPage: self.currentPage)
+        }
     }
 }
