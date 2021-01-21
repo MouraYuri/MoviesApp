@@ -5,8 +5,8 @@
 //  Created by Yuri Moura on 07/11/20.
 //
 import CoreData
-
 import Foundation
+
 struct Movie: Codable {
     let posterPath: String?
     let id: Int
@@ -23,5 +23,19 @@ struct Movie: Codable {
         case voteAverage = "vote_average"
         case overview
         case releaseDate = "release_date"
+    }
+    
+    func parseToMovieEntityAndInsert(into context: NSManagedObjectContext) -> MovieEntity? {
+        if let movieEntity = NSEntityDescription.entity(forEntityName: "MovieEntity", in: context) {
+            let movieParsed = MovieEntity(entity: movieEntity, insertInto: context)
+            movieParsed.id = Int32(self.id)
+            movieParsed.title = self.title
+            movieParsed.overview = self.overview
+            movieParsed.releaseDate = self.releaseDate
+            movieParsed.voteAverage = self.voteAverage
+            movieParsed.posterPath = posterPath
+            return movieParsed
+        }
+        return nil
     }
 }

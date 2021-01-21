@@ -10,6 +10,7 @@
 		2817F1FDE4E38A2B3E2ABDBF /* Pods_iOSChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC409C8972F2AC23FB0FE46D /* Pods_iOSChallenge.framework */; };
 		390D5D6D67E4EEF9974D45EF /* Pods_iOSChallenge_iOSChallengeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 922FA5D4320E2F14890856FC /* Pods_iOSChallenge_iOSChallengeUITests.framework */; };
 		5296B76AB510D7394FA22084 /* Pods_iOSChallengeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A43033A2B689E74A6D6F35F /* Pods_iOSChallengeTests.framework */; };
+		A00AB45725B90D3F0094DCD0 /* CouldThrowErrorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00AB45625B90D3F0094DCD0 /* CouldThrowErrorProtocol.swift */; };
 		A00E9C872556369600E2674C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9C862556369600E2674C /* AppDelegate.swift */; };
 		A00E9C892556369600E2674C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00E9C882556369600E2674C /* SceneDelegate.swift */; };
 		A00E9C932556369800E2674C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00E9C922556369800E2674C /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		5A43033A2B689E74A6D6F35F /* Pods_iOSChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7535959BB372571F4236BBF2 /* Pods-iOSChallenge.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSChallenge.debug.xcconfig"; path = "Target Support Files/Pods-iOSChallenge/Pods-iOSChallenge.debug.xcconfig"; sourceTree = "<group>"; };
 		922FA5D4320E2F14890856FC /* Pods_iOSChallenge_iOSChallengeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOSChallenge_iOSChallengeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A00AB45625B90D3F0094DCD0 /* CouldThrowErrorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouldThrowErrorProtocol.swift; sourceTree = "<group>"; };
 		A00E9C832556369600E2674C /* iOSChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A00E9C862556369600E2674C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A00E9C882556369600E2674C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -259,11 +261,12 @@
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		A02B5C3925B7CB0D00B210AE /* Helpers */ = {
+		A02B5C3925B7CB0D00B210AE /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				A00AB45625B90D3F0094DCD0 /* CouldThrowErrorProtocol.swift */,
 			);
-			path = Helpers;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		A041784825596CF600D47C97 /* Custom Components */ = {
@@ -296,7 +299,7 @@
 		A0E72F062556404400B9E4D4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A02B5C3925B7CB0D00B210AE /* Helpers */,
+				A02B5C3925B7CB0D00B210AE /* Protocols */,
 				A023738E255B7C9500B161D5 /* Enums */,
 				A023738A255B775200B161D5 /* Managers */,
 				A0237389255B774C00B161D5 /* Extensions */,
@@ -577,6 +580,7 @@
 				A00E9C872556369600E2674C /* AppDelegate.swift in Sources */,
 				A0C358E52558A9A10084B470 /* MovieInfosView.swift in Sources */,
 				A0CB268E2556533C0081FB3B /* HomeMoviesView.swift in Sources */,
+				A00AB45725B90D3F0094DCD0 /* CouldThrowErrorProtocol.swift in Sources */,
 				A0ECDFB6255A44D900993ADD /* DetailViewModel.swift in Sources */,
 				A0237390255B7CA900B161D5 /* RequestMethod.swift in Sources */,
 				A09AC63625B7EF3C00EA26EB /* FavoritesViewModel.swift in Sources */,

@@ -71,7 +71,7 @@ class HomeViewController: UIViewController {
 
 }
 
-extension HomeViewController: HomeViewModelDelegate {
+extension HomeViewController: HomeViewModelDelegate, CouldThrowErrorProtocol {
     func didFinishFetchingWithError(_ error: Error) {
         self.loadingIndicatorView.stopAnimating()
     }

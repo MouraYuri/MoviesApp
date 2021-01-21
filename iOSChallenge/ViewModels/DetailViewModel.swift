@@ -13,10 +13,7 @@ class DetailViewModel {
     // MARK: Functions
     func favoriteMovie(movie: Movie) {
         let context = CoreDataManager.shared.persistentContainer.viewContext
-        
-        if let movieEntity = NSEntityDescription.entity(forEntityName: "MovieCoreData", in: context) {
-            let movieManagedObject = NSManagedObject(entity: movieEntity, insertInto: context)
-            movieManagedObject.setValue(movie.id, forKey: "id")
+        if let _ = movie.parseToMovieEntityAndInsert(into: context) {
             do {
                 try context.save()
             } catch {
@@ -28,7 +25,7 @@ class DetailViewModel {
     func unfavoriteMovie(movie: Movie) {
         let context = CoreDataManager.shared.persistentContainer.viewContext
         
-        let request = NSFetchRequest<NSManagedObject>(entityName: "MovieCoreData")
+        let request = NSFetchRequest<NSManagedObject>(entityName: "MovieEntity")
         request.predicate = NSPredicate.init(format: "id==\(movie.id)")
         do {
             let moviesManagedObjectsArray = try context.fetch(request)

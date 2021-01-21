@@ -10,7 +10,17 @@ import UIKit
 class FavoritesViewController: UITableViewController {
     
     // MARK: Control Variables
-    var favoritesMovies = [Movie]()
+    var favoritesMovies = [MovieEntity]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    lazy var viewModel: FavoritesViewModel = { [unowned self] in
+        let obj = FavoritesViewModel()
+        obj.delegate = self
+        return obj
+    }()
     
     // MARK: UI Components
     
@@ -21,6 +31,11 @@ class FavoritesViewController: UITableViewController {
         self.setupViewController()
         self.setupConstraints()
         self.setupTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewModel.getFavoritedMovies()
     }
     
     // MARK: Setup UI
@@ -54,5 +69,19 @@ extension FavoritesViewController {
             customCell.setupCellContent(movie)
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            UIScreen.main.bounds.height/5
+        }
+}
+
+extension FavoritesViewController: CouldThrowErrorProtocol, FavoritesViewModelDelegate {
+    func didFinishFetchingWithError(_ error: Error) {
+        
+    }
+    
+    func didFinishFetching(movies: [MovieEntity]) {
+        self.favoritesMovies = movies
     }
 }

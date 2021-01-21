@@ -11,12 +11,11 @@ import CoreData
 protocol HomeViewModelDelegate: class {
     func didFinishFetching(_ response: FetchMoviesResponse)
     func didFinishFetchingFavoritedMoviesIDs(_ favoritedMoviesIDs: [Int])
-    func didFinishFetchingWithError(_ error: Error)
 }
 
 class HomeViewModel {
     
-    weak var delegate: HomeViewModelDelegate?
+    weak var delegate: (HomeViewModelDelegate & CouldThrowErrorProtocol)?
     
     var moviesURL = MoviesAPIURL.popularMovies.rawValue
     
@@ -41,7 +40,7 @@ class HomeViewModel {
     func getFavoritedMovies(){
         let context = CoreDataManager.shared.persistentContainer.viewContext
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "MovieCoreData")
+        let fetchRequest = NSFetchRequest<MovieEntity>(entityName: "MovieEntity")
         do {
             let managedObjectMovies = try context.fetch(fetchRequest)
             let favoritedMoviesIDs = self.parseManagedObjectsToMoviesIDs(managedObjects: managedObjectMovies)
@@ -51,12 +50,9 @@ class HomeViewModel {
         }
     }
     
-    func parseManagedObjectsToMoviesIDs(managedObjects: [NSManagedObject]) -> [Int] {
-        var idArray: [Int] = []
-        for managedObject in managedObjects {
-            if let id = managedObject.value(forKey: "id") as? Int {
-                idArray.append(id)
-            }
+    func parseManagedObjectsToMoviesIDs(managedObjects: [MovieEntity]) -> [Int] {
+        let idArray = managedObjects.map { (movie) -> Int in
+            Int(movie.id)
         }
         return idArray
     }

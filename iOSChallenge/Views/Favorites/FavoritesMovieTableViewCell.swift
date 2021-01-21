@@ -56,15 +56,6 @@ class FavoritesMovieTableViewCell: UITableViewCell {
         obj.translatesAutoresizingMaskIntoConstraints = false
         return obj
     }()
-    
-    lazy var favoriteIndicatorImageView: UIImageView = {
-        let obj = UIImageView()
-        let img = UIImage(named: "Not-Favorite")?.withRenderingMode(.alwaysTemplate)
-        obj.image = img
-        obj.tintColor = .red
-        obj.translatesAutoresizingMaskIntoConstraints = false
-        return obj
-    }()
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -77,17 +68,18 @@ class FavoritesMovieTableViewCell: UITableViewCell {
         self.selectionStyle = .none
     }
     
-    func setupCellContent(_ movie: Movie) {
+    func setupCellContent(_ movie: MovieEntity) {
         self.movieTitleLabel.text = movie.title
         self.movieRatingLabel.text = self.getMovieRatingText(rating: movie.voteAverage)
         self.moviePosterImageView.setImage(path: movie.posterPath)
-        
         self.movieReleaseDateLabel.text = self.getMovieReleaseDateText(movieReleaseDate: movie.releaseDate)
-        self.setFavoriteButtonImage()
     }
     
-    func getMovieReleaseDateText(movieReleaseDate: String) -> String{
-        let retString = "Data de lançamento: " + movieReleaseDate
+    func getMovieReleaseDateText(movieReleaseDate: String?) -> String? {
+        guard let releaseDate = movieReleaseDate else {
+            return nil
+        }
+        let retString = "Data de lançamento: " + releaseDate
         return retString
     }
     
@@ -97,12 +89,7 @@ class FavoritesMovieTableViewCell: UITableViewCell {
         for _ in 0..<numberOfStars {
             retString.append("⭐")
         }
-        return retString == "" ? "⭐" : retString
-    }
-    
-    func setFavoriteButtonImage(){
-        let img = self.isFavorite ? UIImage(named: "Favorite") : UIImage(named: "Not-Favorite")
-        self.favoriteIndicatorImageView.setImageAndTint(img, withColor: .red)
+        return retString.isEmpty ? "⭐" : retString
     }
     
     func setupConstraints(){
@@ -111,13 +98,12 @@ class FavoritesMovieTableViewCell: UITableViewCell {
         self.contentView.addSubview(self.movieTitleLabel)
         self.contentView.addSubview(self.movieReleaseDateLabel)
         self.contentView.addSubview(self.movieRatingLabel)
-        self.contentView.addSubview(self.favoriteIndicatorImageView)
         
         let distanceFromMoviePoster = CGFloat(16)
         
         NSLayoutConstraint.activate([
             self.moviePosterContainer.centerYAnchor.constraint(equalTo: self.contentView.centerYAnchor),
-            self.moviePosterContainer.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.moviePosterContainer.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 8),
             self.moviePosterContainer.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.8),
             self.moviePosterContainer.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.25),
         ])
@@ -148,13 +134,6 @@ class FavoritesMovieTableViewCell: UITableViewCell {
             self.movieRatingLabel.bottomAnchor.constraint(equalTo: self.moviePosterImageView.bottomAnchor, constant: -8),
             self.movieRatingLabel.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.7),
             self.movieRatingLabel.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.2)
-        ])
-        
-        NSLayoutConstraint.activate([
-            self.favoriteIndicatorImageView.centerYAnchor.constraint(equalTo: self.movieTitleLabel.centerYAnchor),
-            self.favoriteIndicatorImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
-            self.favoriteIndicatorImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.08),
-            self.favoriteIndicatorImageView.heightAnchor.constraint(equalTo: self.contentView.heightAnchor, multiplier: 0.16)
         ])
     }
     
