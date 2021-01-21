@@ -63,6 +63,7 @@ class DetailViewController: UIViewController {
         obj.textColor = .white
         obj.backgroundColor = .clear
         obj.font = UIFont.systemFont(ofSize: 14, weight: .heavy)
+        obj.isEditable = false
         return obj
     }()
 
@@ -76,7 +77,12 @@ class DetailViewController: UIViewController {
     func setupViewController(){
         self.view.backgroundColor = UIColor.mainColor
         self.title = "Detalhes"
+        self.tabBarController?.tabBar.isHidden = true
         self.movieBackdropImageView.isHidden = self.movie.backdropPath == nil ? true : false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     func setupViewControllerContent(movie: Movie){

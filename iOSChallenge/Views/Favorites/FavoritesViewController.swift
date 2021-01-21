@@ -31,6 +31,7 @@ class FavoritesViewController: UITableViewController {
         self.setupViewController()
         self.setupConstraints()
         self.setupTableView()
+        self.setupNavigationBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,12 +44,18 @@ class FavoritesViewController: UITableViewController {
     private func setupTableView() {
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.tableView.separatorStyle = .none
         self.tableView.register(FavoritesMovieTableViewCell.self, forCellReuseIdentifier: FavoritesMovieTableViewCell.identifier)
     }
     
     func setupViewController() {
         self.title = "Favoritos"
         self.view.backgroundColor = UIColor.mainColor
+    }
+    
+    func setupNavigationBar(){
+        self.navigationController?.navigationBar.barTintColor = UIColor.mainColor
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
     func setupConstraints() {
@@ -72,8 +79,26 @@ extension FavoritesViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            UIScreen.main.bounds.height/5
+        UIScreen.main.bounds.height/5
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        let movie = self.favoritesMovies[indexPath.row]
+        switch editingStyle {
+        case .delete:
+            self.tableView.beginUpdates()
+            self.viewModel.unfavoriteMovie(movie: movie)
+            self.favoritesMovies.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            self.tableView.endUpdates()
+        default:
+            return
         }
+    }
 }
 
 extension FavoritesViewController: CouldThrowErrorProtocol, FavoritesViewModelDelegate {

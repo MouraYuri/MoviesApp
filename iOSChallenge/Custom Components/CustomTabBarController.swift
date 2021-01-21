@@ -12,6 +12,7 @@ class CustomTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewControllers = self.getArrayOfViewControllers()
+        self.tabBar.barTintColor = UIColor.mainColor
     }
     
     private func getArrayOfViewControllers() -> [UIViewController] {
