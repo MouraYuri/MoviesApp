@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     
     lazy var viewModel: DetailViewModel = { [unowned self] in
         let obj = DetailViewModel()
+        obj.delegate = self
         return obj
     }()
     
@@ -144,5 +145,11 @@ class DetailViewController: UIViewController {
     
     func getSynopsisText(from movie: Movie) -> String {
         return movie.overview.isEmpty ? "Sinopse não disponível." : movie.overview
+    }
+}
+
+extension DetailViewController: CouldThrowErrorProtocol {
+    func didFinishWithError(_ error: Error) {
+        // Finish Later...
     }
 }

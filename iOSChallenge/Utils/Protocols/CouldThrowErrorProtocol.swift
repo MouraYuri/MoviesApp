@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol CouldThrowErrorProtocol {
-    func didFinishFetchingWithError(_ error: Error)
+protocol CouldThrowErrorProtocol: class {
+    func didFinishWithError(_ error: Error)
 }

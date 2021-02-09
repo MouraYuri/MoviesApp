@@ -26,7 +26,7 @@ class FavoritesViewModel {
             let movies = try context.fetch(fetchRequest)
             self.delegate?.didFinishFetching(movies: movies)
         }catch {
-            self.delegate?.didFinishFetchingWithError(error)
+            self.delegate?.didFinishWithError(error)
         }
     }
     

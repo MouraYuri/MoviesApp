@@ -29,10 +29,10 @@ class HomeViewModel {
                     let response = try decoder.decode(FetchMoviesResponse.self, from: data)
                     self?.delegate?.didFinishFetching(response)
                 } catch {
-                    self?.delegate?.didFinishFetchingWithError(error)
+                    self?.delegate?.didFinishWithError(error)
                 }
             case .failure(let error):
-                self?.delegate?.didFinishFetchingWithError(error)
+                self?.delegate?.didFinishWithError(error)
             }
         }
     }
@@ -46,7 +46,7 @@ class HomeViewModel {
             let favoritedMoviesIDs = self.parseManagedObjectsToMoviesIDs(managedObjects: managedObjectMovies)
             self.delegate?.didFinishFetchingFavoritedMoviesIDs(favoritedMoviesIDs)
         }catch {
-            self.delegate?.didFinishFetchingWithError(error)
+            self.delegate?.didFinishWithError(error)
         }
     }
     

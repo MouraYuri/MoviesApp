@@ -10,6 +10,8 @@ import CoreData
 
 class DetailViewModel {
     
+    weak var delegate: CouldThrowErrorProtocol?
+    
     // MARK: Functions
     func favoriteMovie(movie: Movie) {
         let context = CoreDataManager.shared.persistentContainer.viewContext

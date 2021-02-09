@@ -33,6 +33,8 @@ class HomeMoviesView: UIView {
             }
         }
     }
+    
+    // MARK: UI Components
 
     lazy var moviesCollectionView: UICollectionView = { [unowned self] in
         let layout = UICollectionViewFlowLayout()
@@ -50,6 +52,8 @@ class HomeMoviesView: UIView {
         return obj
     }()
     
+    // MARK: Object Lifecycle
+    
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         self.setupConstraints()
@@ -65,6 +69,8 @@ class HomeMoviesView: UIView {
             self.moviesCollectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
+    
+    // MARK: Others
     
     func setMovies(page: Int, movies: [Movie]) {
         if page == 1 {

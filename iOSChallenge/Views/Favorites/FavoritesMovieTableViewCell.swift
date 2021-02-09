@@ -45,7 +45,7 @@ class FavoritesMovieTableViewCell: UITableViewCell {
     lazy var movieReleaseDateLabel: UILabel = {
         let obj = UILabel()
         obj.textColor = .gray
-        obj.font = UIFont.systemFont(ofSize: 14, weight: .semibold)
+        obj.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
         obj.translatesAutoresizingMaskIntoConstraints = false
         return obj
     }()
@@ -86,9 +86,7 @@ class FavoritesMovieTableViewCell: UITableViewCell {
     func getMovieRatingText(rating: Double) -> String {
         let numberOfStars = Int(rating/2)
         var retString = ""
-        for _ in 0..<numberOfStars {
-            retString.append("⭐")
-        }
+        for _ in 0..<numberOfStars { retString.append("⭐") }
         return retString.isEmpty ? "⭐" : retString
     }
     

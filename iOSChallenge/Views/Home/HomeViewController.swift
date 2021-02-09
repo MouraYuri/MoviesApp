@@ -72,8 +72,11 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HomeViewModelDelegate, CouldThrowErrorProtocol {
-    func didFinishFetchingWithError(_ error: Error) {
-        self.loadingIndicatorView.stopAnimating()
+    func didFinishWithError(_ error: Error) {
+        DispatchQueue.main.async {
+            self.loadingIndicatorView.stopAnimating()
+        }
+        
     }
     
     func didFinishFetchingFavoritedMoviesIDs(_ favoritedMoviesIDs: [Int]) {

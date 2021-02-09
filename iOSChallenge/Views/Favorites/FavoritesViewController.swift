@@ -58,8 +58,7 @@ class FavoritesViewController: UITableViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
     
-    func setupConstraints() {
-    }
+    func setupConstraints() {}
 
 }
 
@@ -102,8 +101,8 @@ extension FavoritesViewController {
 }
 
 extension FavoritesViewController: CouldThrowErrorProtocol, FavoritesViewModelDelegate {
-    func didFinishFetchingWithError(_ error: Error) {
-        
+    func didFinishWithError(_ error: Error) {
+        // Finish Later...
     }
     
     func didFinishFetching(movies: [MovieEntity]) {
